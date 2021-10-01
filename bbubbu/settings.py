@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,5 @@ LOGIN_REDIRECT_URL = "/"
 
 SITE_ID = 1
 # ACCOUNT_FORMS = {'signup': 'users.forms.SignupForm'}
+
+AUTH_USER_MODEL='user.User'
