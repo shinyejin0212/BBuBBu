@@ -1,0 +1,61 @@
+~<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "signup_container">
+        <form action="{%url 'user:signup' %}" method="POST">
+            {%csrf_token%}
+            <div class="signup_title">회원가입</div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">아이디</div>
+                <input type="text" class="signup" name="username" placeholder="아이디">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">비밀번호</div>
+                <input type="password" class="signup" name="password1" placeholder="비밀번호">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">비밀번호 확인</div>
+                <input type="password" class="signup" name="password2" placeholder="비밀번호 확인">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">닉네임</div>
+                <input type="text" class="signup" name="nickname" placeholder="닉네임">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">이름</div>
+                <input type="text" class="signup" name="name" placeholder="이름">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">이메일</div>
+                <input type="email" class="signup" name="email" placeholder="이메일">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">학과</div>
+                <input type="text" class="signup" name="department" placeholder="학과(ex.산업시스템공학과)">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">학번</div>
+                <input type="text" class="signup" name="school_id" placeholder="학번">
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">기숙사생 여부</div>
+                <div>
+                <span id="hobbyRadio"><input type="radio" name="is_dorm" value="yes">기숙사생</span>   
+                <span id="hobbyRadio"><input type="radio" name="is_dorm" value="no">아님</span>
+                </div>                  
+            </div>
+            <div class="signup_input_container">
+                <div class="signup_input_title">기숙사 번호</div>
+                <input type="text" class="signup" default='' name="dorm_id" placeholder="기숙사번호 (기숙사생 아닐시 입력하지 않음) ">
+            </div>
+            <button id="confirmBtn" type="submit">완료</button>
+        </form>
+    </div>
+</body>
+</html>
