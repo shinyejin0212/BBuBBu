@@ -19,20 +19,25 @@ def signup_view(request):
     res_data = {}
     if request.method =='POST':
         if request.POST['password1'] == request.POST['password2']:
-            user=User.objects.create_user(
-                username=request.POST['username'],
-                password=request.POST['password1'],
-                nickname=request.POST['nickname'],
-                name=request.POST['name'],
-                email=request.POST['email'],
-                department=request.POST['department'],
-                school_id=request.POST['school_id'],
-                is_dorm=request.POST['is_dorm'],
-                dorm_id=request.POST['dorm_id'],
-            )
-            user.save()
-            auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('user:login')
+            input_email=request.POST['email']
+            if(input_email.split('@')[1]=='dongguk.edu'):
+                user=User.objects.create_user(
+                    username=request.POST['username'],
+                    password=request.POST['password1'],
+                    nickname=request.POST['nickname'],
+                    name=request.POST['name'],
+                    email=request.POST['email'],
+                    department=request.POST['department'],
+                    school_id=request.POST['school_id'],
+                    is_dorm=request.POST['is_dorm'],
+                    dorm_id=request.POST['dorm_id'],
+                )
+                user.save()
+                auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
+                return redirect('user:login')
+            else:
+                return render(request, 'error.html')
+                
     else:
         res_data['error']='비밀번호가 다릅니다.'
     return render(request, 'signup.html',res_data)
