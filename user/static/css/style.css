@@ -1004,7 +1004,7 @@ section {
   color: #45505b;
   font-size: 14px;
   text-align: center;
-  padding: 30px 0;
+  padding: 0 0;
 }
 #footer h3 {
   font-size: 36px;
@@ -1047,4 +1047,70 @@ section {
 }
 #footer .credits {
   font-size: 13px;
+}
+
+/* signup_container*/
+
+.signup_container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 600px;
+  background-color: white;
+  text-align: center;
+}
+
+.signup_title {
+  font-weight: 100;
+  margin-top: 30px;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.signup_input_container {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.signup_input_title {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.signup {
+  width: 250px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+
+#hobbyBtn {
+  margin-top: 10px;
+  width: 100px;
+  color: white;
+  background-color: #4ccd97;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+}
+
+#confirmBtn {
+  margin-top: 10px;
+  width: 250px;
+  color: white;
+  background-color: #4ccd97;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
