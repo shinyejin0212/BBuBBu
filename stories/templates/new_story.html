@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+        <form action="{%url 'stories:create'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <p>제목 : <input type="text" name="title" required></p>
+            <p>사진 : <input type="file" name="image"></p>
+            <p>내용 : <textarea style="width: 100%;" type="text" name="body" id="" cols="50" rows="10"
+                    required></textarea></p>
+            <button type="submit">제출</button>
+        </form>
+        </div>
+    </section>
+{%endblock%}

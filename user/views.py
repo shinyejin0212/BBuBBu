@@ -51,7 +51,7 @@ def login_view(request):
         print(User)
         if User is not None:
             auth.login(request, User)
-            return redirect('user:main')
+            return redirect('index')
             
             #여기 main.html 연결시켜줘야함.
 
