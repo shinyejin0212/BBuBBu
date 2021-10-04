@@ -4,5 +4,5 @@ from .views import *
 app_name="stories"
 
 urlpatterns = [
-    path(''),
+    path('detail',detail,name="detail"),
 ] 
