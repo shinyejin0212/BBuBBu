@@ -65,3 +65,10 @@ def logout_view(request):
 
 def main(request):
     return render(request, "main.html")
+
+
+#내 정보 보기
+def profile(request):
+    check=request.username
+    profile=User.objects.get(username=check)
+    return render(request, 'profile.html',{'profile':profile})
