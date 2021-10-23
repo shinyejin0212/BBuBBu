@@ -47,7 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #닉네임
     name=models.CharField(max_length=30, default='')
     #이름
-    email = models.EmailField(max_length=20,default='')
+    email = models.EmailField(max_length=30,default='')
     #이메일
     CHOICE_DEPART=(
         ('AI융합학부','AI융합학부'),
@@ -129,6 +129,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    image = models.ImageField(upload_to="user/",null=True)
 
     USERNAME_FIELD='username'
     REQUIRED_FIELDS=['nickname']
