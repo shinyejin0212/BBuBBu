@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<section id="portfolio-details" class="portfolio-details">
+<div class="container">
+    {%for i in want_adopt%}
+        <div>
+        {{i.user.id}}번님<br>
+        {{i.user.school_id}}<br>
+        {{i.user.department}}<br>
+        {% if request.user.adopt in i.user.adopt.adopted.all %}
+            <a href="{%url 'adopt:adopting' i.user.id %}"><button type="button" class="btn btn-outline-info">파양</button></a>
+        {% else %}
+            <a href="{%url 'adopt:adopting' i.user.id %}"><button type="button" class="btn btn-info">입양</button></a>
+        {% endif %}
+        </div><br>
+    {%endfor%}
+</div>
+</section>
 {%endblock%}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="portfolio-details" class="portfolio-details">
+<div class="container">
+<a href="{% url 'adopt:adopt_try' request.user.id %}">list</a>
+</div>
+</section>
+{%endblock%}

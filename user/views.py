@@ -34,7 +34,7 @@ def signup_view(request):
                 )
                 user.save()
                 auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
-                return redirect('user:login')
+                return redirect('index')
             else:
                 return render(request, 'error.html')
                 

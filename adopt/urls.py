@@ -4,7 +4,7 @@ from .views import *
 app_name="adopt"
 
 urlpatterns = [
-    path('',main,name="main"),
+    path('',adopt_main,name="adopt_main"),
     path('adopt_try/<int:id>', adopt_try,name="adopt_try"),
-
+    path('adopting/<int:id>',adopting,name="adopting"),
 ] 
