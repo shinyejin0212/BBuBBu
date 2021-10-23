@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="portfolio-details" class="portfolio-details">
+<div class="container">
+
+{%if profile.image%}
+    <p>사진 : <img src="{{profile.image.url}}" alt="사진"></p>
+{%endif%}
+<a href="{%url 'user:edit' profile.id %}">개인정보 수정하기</a>
+    
+
+<div class="signup_input_container">
+    <div class="signup_input_title">아이디 : </div>
+    <input readonly type="text" class="signup" name="username" value="{{profile.username}}">
+</div>
+
+<div class="signup_input_container">
+    <div class="signup_input_title">닉네임 : </div>
+    <input readonly type="text" class="signup" name="nickname" value="{{profile.nickname}}">
+</div>
+<div class="signup_input_container">
+    <div class="signup_input_title">이름 : </div>
+    <input readonly type="text" class="signup" name="name" value=" {{profile.name}}">
+</div>
+<div class="signup_input_container">
+    <div class="signup_input_title">학과 : </div>
+    <input readonly type="text" class="signup" name="department" value="{{profile.department}}">
+</div>
+<div class="signup_input_container">
+    <div class="signup_input_title">학번 : </div>
+    <input readonly type="text" class="signup" name="school_id" value="{{profile.school_id}}">
+</div>
+
+{% if 'no' in profile.is_dorm %}
+<div class="signup_input_container">
+    <div class="signup_input_title">기숙사생 여부 : </div>
+    <div>
+        <input readonly type="text" name="is_dorm" value="{{profile.is_dorm}}">
+    </div>
+</div>
+{%else%}
+<div class="signup_input_container">
+    <div class="signup_input_title">기숙사생 여부 : </div>
+    <div>
+        <input readonly type="text" name="is_dorm" value="{{profile.is_dorm}}">
+    </div>
+</div>
+<div class="signup_input_container">
+    <div class="signup_input_title">기숙사 번호 : </div>
+    <input readonly type="text" class="signup" default='' name="dorm_id" value="{{profile.dorm_id}}">
+</div>
+
+</div>
+</section>
+{%endif%}
+
+{%endblock%}
