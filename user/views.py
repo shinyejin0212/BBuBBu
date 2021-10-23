@@ -48,7 +48,7 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         User = auth.authenticate(username = username, password = password)
-        print(User)
+        
         if User is not None:
             auth.login(request, User)
             return redirect('index')
@@ -68,7 +68,29 @@ def main(request):
 
 
 #내 정보 보기
-def profile(request):
-    check=request.username
-    profile=User.objects.get(username=check)
+def profile(request,user_id):
+    profile=User.objects.get(id=user_id)
     return render(request, 'profile.html',{'profile':profile})
+
+def edit(request,user_id):
+    profile=User.objects.get(id=user_id)
+    return render(request,'edit.html',{'profile':profile})
+
+def update_profile(request,user_id):
+    profile=User.objects.get(id=user_id)
+    if request.method =='POST':
+        profile.username=request.POST['username']
+        profile.password=request.POST['password1']
+        profile.nickname=request.POST['nickname']
+        profile.name=request.POST['name']
+        profile.department=request.POST['department']
+        profile.school_id=request.POST['school_id']
+        profile.is_dorm=request.POST['is_dorm']
+        if(profile.is_dorm=='no'):
+            profile.dorm_id=''
+        else:
+            profile.dorm_id=request.POST['dorm_id']
+        profile.save()
+    return redirect('user:profile',user_id)
+        
+      
