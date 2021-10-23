@@ -3,6 +3,8 @@
 {% block content %}
 <section id="portfolio-details" class="portfolio-details">
     <div class="container">
+        <h3><a style="color:black;" href="{% url 'stories:new_story' %}">나의 뻔모임은?</a></h3><br>
+
         <h3><a style="color:black;" href="{% url 'stories:new_story' %}">글쓰기</a></h3><br>
         {%for story in stories%}
            
