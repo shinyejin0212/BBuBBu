@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import auth
 from .models import User
 from django.contrib.auth.decorators import login_required
@@ -68,19 +68,20 @@ def main(request):
 
 
 #내 정보 보기
-def profile(request,user_id):
-    profile=User.objects.get(id=user_id)
+def profile(request,username):
+    profile=User.objects.get(username=username)
     return render(request, 'profile.html',{'profile':profile})
 
-def edit(request,user_id):
-    profile=User.objects.get(id=user_id)
+def edit(request,username):
+    profile=User.objects.get(username=username)
     return render(request,'edit.html',{'profile':profile})
 
-def update_profile(request,user_id):
-    profile=User.objects.get(id=user_id)
+def update_profile(request,username):
+    profile=User.objects.get(username=username)
     if request.method =='POST':
         profile.username=request.POST['username']
-        profile.password=request.POST['password1']
+        profile.password1=request.POST['password1']
+        profile.password2=request.POST['password2']
         profile.nickname=request.POST['nickname']
         profile.name=request.POST['name']
         profile.department=request.POST['department']
@@ -90,9 +91,7 @@ def update_profile(request,user_id):
             profile.dorm_id=''
         else:
             profile.dorm_id=request.POST['dorm_id']
-        if request.FILES.get('image'):
-            profile.image=request.FILES.get('image')
         profile.save()
-    return redirect('user:profile',user_id)
+    return redirect('user:profile',profile.username)
         
       

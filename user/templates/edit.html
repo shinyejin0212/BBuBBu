@@ -3,11 +3,8 @@
 {% block content %}
 <section id="portfolio-details" class="portfolio-details">
 <div class="container">
-<form action="{%url 'user:update_profile' profile.id%}" method="POST">
+<form action="{%url 'user:update_profile' profile.username%}" method="POST">
     {%csrf_token%}
-    <div class="signup_input_container">
-        <p>사진 : <input value="{{profile.image}}" type="file" name="image">{{post.image}}</p>
-    </div>
     <div class="signup_input_container">
         <div class="signup_input_title">아이디</div>
         <input type="text" class="signup" name="username"  value="{{profile.username}}">
@@ -15,6 +12,10 @@
     <div class="signup_input_container">
         <div class="signup_input_title">비밀번호</div>
         <input required type="password" class="signup" name="password1" placeholder="비밀번호 다시 입력해주세요">
+    </div>
+    <div class="signup_input_container">
+        <div class="signup_input_title">비밀번호 확인</div>
+        <input required type="password" class="signup" name="password2" placeholder="비밀번호 다시 입력해주세요">
     </div>
     <div class="signup_input_container">
         <div class="signup_input_title">닉네임</div>
