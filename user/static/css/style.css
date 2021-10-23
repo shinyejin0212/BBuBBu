@@ -1059,6 +1059,7 @@ section {
   width: 600px;
   background-color: white;
   text-align: center;
+  overflow-y: scroll;
 }
 
 .signup_title {
