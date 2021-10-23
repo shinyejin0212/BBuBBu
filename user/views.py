@@ -78,9 +78,13 @@ def edit(request,user_id):
 
 def update_profile(request,user_id):
     profile=User.objects.get(id=user_id)
+    
     if request.method =='POST':
+        # print(request.FILES.get('photo'))
+        # if request.FILES.get('photo'):
+        #     profile.image=request.FILES['photo']
         profile.username=request.POST['username']
-        profile.password=request.POST['password1']
+        profile.password1=request.POST['password1']
         profile.nickname=request.POST['nickname']
         profile.name=request.POST['name']
         profile.department=request.POST['department']
@@ -90,8 +94,7 @@ def update_profile(request,user_id):
             profile.dorm_id=''
         else:
             profile.dorm_id=request.POST['dorm_id']
-        if request.FILES.get('image'):
-            profile.image=request.FILES.get('image')
+        
         profile.save()
     return redirect('user:profile',user_id)
         

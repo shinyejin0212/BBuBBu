@@ -5,9 +5,10 @@
 <div class="container">
 <form action="{%url 'user:update_profile' profile.id%}" method="POST">
     {%csrf_token%}
-    <div class="signup_input_container">
-        <p>사진 : <input value="{{profile.image}}" type="file" name="image">{{post.image}}</p>
-    </div>
+    {% comment %} <div class="signup_input_container">
+        <div class="signup_input_title">사진</div>
+        <input name="photo" type="file" accept="image/*">
+    </div>  {% endcomment %}
     <div class="signup_input_container">
         <div class="signup_input_title">아이디</div>
         <input type="text" class="signup" name="username"  value="{{profile.username}}">

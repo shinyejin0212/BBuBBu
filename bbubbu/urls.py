@@ -29,4 +29,6 @@ urlpatterns = [
     path('stories/',include('stories.urls')),
     path('user/',include('user.urls')),
     path('match/',include('matching.urls')),
+    path('adopt/',include('adopt.urls')),
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

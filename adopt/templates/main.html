@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<a href="{% url 'adopt:adopt_try' request.user.id %}"></a>
+{%endblock%}

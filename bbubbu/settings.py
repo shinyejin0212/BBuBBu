@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'stories',
     'matching',
+    'adopt',
 ]
 
 MIDDLEWARE = [
@@ -141,14 +142,14 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-allauth
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-]
+# AUTHENTICATION_BACKENDS = [
+#     "django.contrib.auth.backends.ModelBackend",
+#     "allauth.account.auth_backends.AuthenticationBackend",
+# ]
 
-LOGIN_REDIRECT_URL = "/"
+# LOGIN_REDIRECT_URL = "/"
 
-SITE_ID = 1
+# SITE_ID = 1
 # ACCOUNT_FORMS = {'signup': 'users.forms.SignupForm'}
 
 AUTH_USER_MODEL='user.User'
