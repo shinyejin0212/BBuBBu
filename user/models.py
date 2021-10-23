@@ -40,9 +40,6 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-
- 
-
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True, default='')
     #아이디
