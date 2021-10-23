@@ -3,6 +3,10 @@
 {% block content %}
 <section id="portfolio-details" class="portfolio-details">
 <div class="container">
+
+{%if profile.image%}
+    <p>사진 : <img src="{{profile.image.url}}" alt="사진"></p>
+{%endif%}
 <a href="{%url 'user:edit' profile.id %}">개인정보 수정하기</a>
     
 

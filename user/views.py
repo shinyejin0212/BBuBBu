@@ -90,6 +90,8 @@ def update_profile(request,user_id):
             profile.dorm_id=''
         else:
             profile.dorm_id=request.POST['dorm_id']
+        if request.FILES.get('image'):
+            profile.image=request.FILES.get('image')
         profile.save()
     return redirect('user:profile',user_id)
         
