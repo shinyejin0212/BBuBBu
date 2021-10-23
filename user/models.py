@@ -114,7 +114,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('화공생물공학과','화공생물공학과'),
         ('화학과','화학과'),
         ('회계학과','회계학과')
-
     )
     department=models.CharField(max_length=50, choices=CHOICE_DEPART,default='')
     #학과
@@ -124,12 +123,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     #기숙사생 여부 체크 
     dorm_id=models.CharField(max_length=30, default='')
     #기숙사 번호
+
     objects=UserManager()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    image = models.ImageField(upload_to="user/",null=True)
 
     USERNAME_FIELD='username'
     REQUIRED_FIELDS=['nickname']
