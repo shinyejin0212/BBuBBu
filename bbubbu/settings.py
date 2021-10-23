@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'stories',
     'matching',
     'adopt',
+    'conversation',
 ]
 
 MIDDLEWARE = [
