@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="portfolio-details" class="portfolio-details">
+<div class="container">
+<a href="{% url 'adopt:adopt_try' request.user.id %}">입양 후보 list</a>
+<br><br>
+<div>내가 입양한사람 : {{mine.adopt.adopting.count}} 명</div><br>
+{% for adopting in mine.adopt.adopting.all %}
+<div>
+    {{adopting.user.id}}번님<br>
+    {{adopting.user.school_id}}<br>
+    {{adopting.user.department}}<br>
+    {{adopting.user.name}}<br>
+
+
+</div>
+{% endfor %}
+<br>
+
+
+나를 입양한사람 : {{mine.adopt.adopted.count}} 명
+{% for adopted in mine.adopt.adopted.all %}
+<div>
+    {{adopted.user.id}}번님<br>
+    {{adopted.user.school_id}}<br>
+    {{adopted.user.department}}<br>
+
+</div>
+{% endfor %}
+<br>
+</div>
+</section>
+{%endblock%}

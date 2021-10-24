@@ -7,8 +7,8 @@ urlpatterns = [
     path('signup/',signup_view,name='signup'),
     path("main/", main, name='main'),
     path("logout/", logout_view, name='logout'),
-    path('profile/<str:username>', profile, name='profile'),
-    path('edit/<str:username>', edit, name='edit'),
-    path('update_profile/<str:username>', update_profile, name='update_profile'),
+    path('profile/<int:user_id>', profile, name='profile'),
+    path('edit/<int:user_id>', edit, name='edit'),
+    path('update_profile/<int:user_id>', update_profile, name='update_profile'),
 
 ] 

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'stories',
     'matching',
+    'adopt',
+    'conversation',
 ]
 
 MIDDLEWARE = [

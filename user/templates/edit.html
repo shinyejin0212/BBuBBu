@@ -3,15 +3,19 @@
 {% block content %}
 <section id="portfolio-details" class="portfolio-details">
 <div class="container">
-<form action="{%url 'user:update_profile' profile.username%}" method="POST">
+<form action="{%url 'user:update_profile' profile.id%}" method="POST">
     {%csrf_token%}
+    {% comment %} <div class="signup_input_container">
+        <div class="signup_input_title">사진</div>
+        <input name="photo" type="file" accept="image/*">
+    </div>  {% endcomment %}
     <div class="signup_input_container">
         <div class="signup_input_title">아이디</div>
         <input type="text" class="signup" name="username"  value="{{profile.username}}">
     </div>
     <div class="signup_input_container">
         <div class="signup_input_title">비밀번호</div>
-        <input required type="password" class="signup" name="password1" placeholder="비밀번호 다시 입력해주세요">
+        <input required type="password" class="signup" name="password1" placeholder="비밀번호 입력해주세요">
     </div>
     <div class="signup_input_container">
         <div class="signup_input_title">비밀번호 확인</div>
@@ -103,7 +107,7 @@
         <div class="signup_input_title">기숙사생 여부</div>
         <div>
             <span id="hobbyRadio" style="font-size: 13px;"><input type="radio" name="is_dorm" value="yes">기숙사생</span>
-            <span id="hobbyRadio" style="font-size: 13px;"><input type="radio" name="is_dorm" value="no">아님</span>
+            <span id="hobbyRadio" style="font-size: 13px;"><input checked type="radio" name="is_dorm" value="no">아님</span>
         </div>
     </div>
     <div class="signup_input_container">

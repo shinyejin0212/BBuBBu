@@ -34,7 +34,7 @@ def signup_view(request):
                 )
                 user.save()
                 auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
-                return redirect('user:login')
+                return redirect('index')
             else:
                 return render(request, 'error.html')
                 
@@ -68,17 +68,21 @@ def main(request):
 
 
 #내 정보 보기
-def profile(request,username):
-    profile=User.objects.get(username=username)
+def profile(request,user_id):
+    profile=User.objects.get(id=user_id)
     return render(request, 'profile.html',{'profile':profile})
 
-def edit(request,username):
-    profile=User.objects.get(username=username)
+def edit(request,user_id):
+    profile=User.objects.get(id=user_id)
     return render(request,'edit.html',{'profile':profile})
 
-def update_profile(request,username):
-    profile=User.objects.get(username=username)
+def update_profile(request,user_id):
+    profile=User.objects.get(id=user_id)
+    
     if request.method =='POST':
+        # print(request.FILES.get('photo'))
+        # if request.FILES.get('photo'):
+        #     profile.image=request.FILES['photo']
         profile.username=request.POST['username']
         profile.password1=request.POST['password1']
         profile.password2=request.POST['password2']
@@ -92,6 +96,6 @@ def update_profile(request,username):
         else:
             profile.dorm_id=request.POST['dorm_id']
         profile.save()
-    return redirect('user:profile',profile.username)
+    return redirect('user:profile',profile.id)
         
       

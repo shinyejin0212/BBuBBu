@@ -5,6 +5,5 @@ app_name="matching"
 
 urlpatterns = [
     path('', matching_view,name="match"),
-  
 
 ] 

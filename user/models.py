@@ -40,9 +40,6 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-
- 
-
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True, default='')
     #아이디
@@ -126,6 +123,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #기숙사생 여부 체크 
     dorm_id=models.CharField(max_length=30, default='')
     #기숙사 번호
+    # image = models.ImageField(upload_to="user/",blank=True, null=True)
 
     objects=UserManager()
     is_active = models.BooleanField(default=True)
