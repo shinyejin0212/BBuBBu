@@ -4,7 +4,7 @@
 
     {% if request.user.is_dorm == 'yes' %}
         {% if  not request.user.d_followings.all  %}
-        <button><a href="{%url 'dormline:view_random' request.user.username%}">조회</a></button>
+        <button><a href="{%url 'dormline:view_random' request.user.id %}">조회</a></button>
         {% endif %}
     {% endif %}
         
@@ -19,5 +19,5 @@
             <h3>{{f.nickname}}</h3>
         {% endfor %}
     {% endif %}
-    
+
 {%endblock%}
