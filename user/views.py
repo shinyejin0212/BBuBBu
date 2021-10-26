@@ -20,28 +20,48 @@ def signup_view(request):
     if request.method=='GET':
         return render(request,'signup.html')
     elif request.method =='POST':
-        if request.POST['password1'] == request.POST['password2']:
-            input_email=request.POST['email']
-            if(input_email.split('@')[1]=='dongguk.edu'):
-                user=User.objects.create_user(
-                    username=request.POST['username'],
-                    password=request.POST['password1'],
-                    nickname=request.POST['nickname'],
-                    name=request.POST['name'],
-                    email=request.POST['email'],
-                    department=request.POST['department'],
-                    school_id=request.POST['school_id'],
-                    is_dorm=request.POST['is_dorm'],
-                    dorm_id=request.POST['dorm_id'],
-                )
-                user.save()
-                auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
-                return redirect('index')
-            else:
-                return render(request, 'error.html')    
+        username=request.POST['username']
+        password=request.POST['password1']
+        re_password=request.POST['password2']
+        nickname=request.POST['nickname']
+        name=request.POST['name']
+        email=request.POST['email']
+        department=request.POST['department']
+        school_id=request.POST['school_id']
+        is_dorm=request.POST['is_dorm']
+        dorm_id=request.POST['dorm_id']
+
+        res_data={}
+        #unique값인 username과 nickname 예외처리를 위한
+        all=User.objects.all()
+        username_lst=[x.username for x in all]
+        nick_lst=[x.nickname for x in all]
+        if not (username and password and nickname and name and email and department and school_id and is_dorm):
+            res_data['error']= "모든 값을 입력해야합니다."
+        elif password != re_password:
+            res_data['error']= "비밀번호가 다릅니다."
+        elif email.split('@')[1] != 'dongguk.edu':
+            res_data['error']= "@dongguk.edu로 가입해야합니다."
+        elif username in username_lst:
+            res_data['error']="이미 있는 아이디입니다."
+        elif nickname in nick_lst:
+            res_data['error']="이미 있는 닉네임입니다."
         else:
-            res_data['error']='비밀번호가 다릅니다.'
+            user=User.objects.create_user(
+                username=username,
+                password=password,
+                nickname=nickname,
+                name=name,
+                email=email,
+                department=department,
+                school_id=school_id,
+                is_dorm=is_dorm,
+                dorm_id=dorm_id,)
+            user.save()
+            auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('index')
         return render(request, 'signup.html',res_data)
+        
 
 #로그인
 def login_view(request):
