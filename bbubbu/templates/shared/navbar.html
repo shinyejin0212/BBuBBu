@@ -1,4 +1,15 @@
 {% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container px-lg-5">
+      <a class="navbar-brand" href="#!">BBUBBU</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
  <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -12,7 +23,7 @@
         <li><a href="{% url 'user:profile' request.user.id %}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Profile</span></a></li>
         {% endif %}
         <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="{% url 'adopt:adopt_main'%}" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>입양하기</span></a></li>
         <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
       </ul>
