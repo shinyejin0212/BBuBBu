@@ -17,7 +17,9 @@ def test(request):
 #회원가입
 def signup_view(request):
     res_data = {}
-    if request.method =='POST':
+    if request.method=='GET':
+        return render(request,'signup.html')
+    elif request.method =='POST':
         if request.POST['password1'] == request.POST['password2']:
             input_email=request.POST['email']
             if(input_email.split('@')[1]=='dongguk.edu'):
@@ -36,11 +38,10 @@ def signup_view(request):
                 auth.login(request,user, backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('index')
             else:
-                return render(request, 'error.html')
-                
-    else:
-        res_data['error']='비밀번호가 다릅니다.'
-    return render(request, 'signup.html',res_data)
+                return render(request, 'error.html')    
+        else:
+            res_data['error']='비밀번호가 다릅니다.'
+        return render(request, 'signup.html',res_data)
 
 #로그인
 def login_view(request):
