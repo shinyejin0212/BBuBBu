@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if not others.all %}
+        <h3>아직 긱라인이 존재하지 않습니다</h3>
+    {% else %}
+        {% for o in others.all %}
+            팔로우는 한 명만 할 수 있습니다. 해당 리스트는 같은 층의 학생을 4명 리스트업한 것입니다. 
+            <div>
+                <head>{{o.nickname}}</head>
+                <button><a href="{%url 'dormline:follow' o.id %}">팔로우</a></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{%endblock%}

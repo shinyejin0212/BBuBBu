@@ -2,10 +2,22 @@
 {% load static %}
 {% block content %}
 
-<!--1. 내 팔로워 있는지,1-1 내 팔로워 없으면 그냥 빈칸 2. 내 팔로잉 없으면 조회 기능 만들기 3. 내 팔로잉 있으면 그 팔로잉 된 사람 띄우기-->
+    {% if request.user.is_dorm == 'yes' %}
+        {% if  not request.user.d_followings.all  %}
+        <button><a href="{%url 'dormline:view_random' request.user.id %}">조회</a></button>
+        {% endif %}
+    {% endif %}
+        
+    <!--내 팔로워 있는지 보여주는 칸-->
+    <h3>나를 팔로우하고 있는 사람은?</h3>
 
-<!--1. request에 있는 follower로 확인 가능 ,1-1 내 팔로워 없으면 그냥 빈칸 2. 내 팔로잉 없으면 조회 기능 만들기 3. 내 팔로잉 있으면 그 팔로잉 된 사람 띄우기-->
-
-<button>조회</button>
+    {% if not followers.all %}
+        <h3>아직 팔로워가 없습니다.</h3>
+        {{requ}}
+    {% else %}
+        {% for f in followers.all %}
+            <h3>{{f.nickname}}</h3>
+        {% endfor %}
+    {% endif %}
 
 {%endblock%}

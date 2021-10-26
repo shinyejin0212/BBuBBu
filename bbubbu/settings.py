@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'matching',
     'adopt',
     'conversation',
+    'dormline',
 ]
 
 MIDDLEWARE = [

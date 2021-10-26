@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User,BaseUserManager,AbstractBaseUser,PermissionsMixin
-
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 
 class UserManager(BaseUserManager):
@@ -30,7 +31,7 @@ class UserManager(BaseUserManager):
             email='',
             department='',
             school_id=0,
-            is_dorm=True,
+            is_dorm=False,
             dorm_id=0,
         )
         user.set_password(password)
@@ -124,6 +125,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     dorm_id=models.CharField(max_length=30, default='')
     #기숙사 번호
     # image = models.ImageField(upload_to="user/",blank=True, null=True)
+    d_followings=models.ManyToManyField("self",related_name='d_followers',symmetrical=False)
 
     objects=UserManager()
     is_active = models.BooleanField(default=True)
@@ -136,3 +138,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
