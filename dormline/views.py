@@ -18,19 +18,16 @@ def view_random(request, id):
     floor=me_id//1000
     room=me_id%1000
     floor=str(floor)
-    #내 층이랑 방 호수 받았음.
-    others=User.objects.filter(Q(d_followers__isnull=True)&Q(dorm_id__startswith=floor)&~Q(dorm_id=me_id)&~Q(dorm_id=0)&~Q(dorm_id='')&~Q(d_followings__in=[request.User]))
-    #others는 층수 같고, 내 방은 아닌 사람
-    #dorm_id가 0은 아니어야함 공백도 아니어야함
-    #팔로워도 없어야한다. 
-    #나를 팔로잉 하는 것도 아니어야함
 
-    random.seed(1)
-    li=[x for x in range(len(others))]
-    if len(others)<5:
-        choice_list=li
+    #others는 층수 같고, 내 방은 아닌 사람. dorm_id가 0은 아니어야함 공백도 아니어야함
+    my_followers=me.d_followers.all()
+
+    if not my_followers:
+        #내 팔로워가 없으면
+        others=User.objects.filter(Q(d_followers__isnull=True)&Q(dorm_id__startswith=floor)&~Q(dorm_id=me_id)&~Q(dorm_id=0)&~Q(dorm_id='')).order_by('?')[:5]
     else:
-        choice_list=random.sample(li, 5)
+        #팔로워가 있으면
+        others=User.objects.filter(Q(d_followers__isnull=True)&Q(dorm_id__startswith=floor)&~Q(dorm_id=me_id)&~Q(dorm_id=0)&~Q(dorm_id='')&~Q(username=my_followers[0].username)).order_by('?')[:5]
 
     return render(request, 'dorm_rand.html',{'others':others})
 
