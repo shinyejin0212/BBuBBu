@@ -1,14 +1,147 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section id="portfolio-details" class="portfolio-details">
-<div class="container">
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
 
+.message-blue {
+    position: relative;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #A8DDFD;
+    width: 30%;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #97C6E3;
+    border-radius: 10px;
+}
 
+.message-orange {
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: calc(100% - 40%);
+    padding: 10px;
+    background-color: #f8e896;
+    width: 30%;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #dfd087;
+    border-radius: 10px;
+    
+}
 
+.message-content {
+    
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    word-break: break-all;
+    margin-bottom: 40px;
+    letter-spacing :0.5px;
+    
+}
 
+.message-timestamp-right {
+    position: absolute;
+    font-size: .75em;
+    font-weight: 300;
+    bottom: 8px;
+    right: 8px;
+}
 
+.message-timestamp-left {
+    position: absolute;
+    font-size: .75em;
+    font-weight: 300;
+    bottom: 8px;
+    left: 8px;
+}
 
+.message-blue:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #A8DDFD;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    top: 0;
+    left: -15px;
+}
+
+.message-blue:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 17px solid #97C6E3;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    top: -1px;
+    left: -17px;
+}
+
+.message-orange:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #f8e896;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    bottom: 0;
+    right: -15px;
+}
+
+.message-orange:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 17px solid #dfd087;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    bottom: -1px;
+    right: -17px;
+}
+
+</style>
+<br>
+
+<div class="container" style="margin-top : 10%; margin-left: 10%; margin-right: 10%;">
+    {% for i in all %}
+        {%for j in i%}   
+        <div class="message-blue">
+            <p class="message-content" >{{j.body}}</p>
+            
+            <div class="message-timestamp-left">{{j.writer}}<br>  SMS {{j.updated_at}}</div>
+        </div>
+        
+        {%endfor%}
+    
+    {%endfor%}
+    
+    {% for i in mine %}
+        {% if i == talk %}
+        <form action="{%url 'conversation:update_talk' talk.id %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}    
+            <div class="message-orange">
+                <textarea required type="text" name="body" rows="5" style="width: 100%; margin-bottom: 40px;">{{i.body}}</textarea>
+                <div class="message-timestamp-right">SMS {{i.updated_at}}</div>
+                <button type="submit">수정하기</button>
+            </div>
+        </form>
+        {%else%}
+        <div class="message-orange">
+            <p class="message-content">{{i.body}}</p>
+            <div class="message-timestamp-right">SMS {{i.updated_at}}</div>
+        </div>
+        {%endif%}
+    {%endfor%}
+    
+
+ 
 </div>
 </section>
 {%endblock%}

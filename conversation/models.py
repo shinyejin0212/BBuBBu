@@ -6,7 +6,7 @@ class Talk(models.Model):
     id = models.AutoField(primary_key=True)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
-    created_at = models.DateTimeField(auto_now=False)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     
