@@ -23,11 +23,10 @@
            
         {%endfor%}
 
-        <div class="col-12">
-            {{ alarm }}
-        </div>
-
+        
+        {% if not request.user.s_followings %}
         <h3><a style="color:black;" href="{% url 'matching:match_view' request.user.id %}">뻔라인 조회</a></h3><br>
+        {% endif %}
         <a href="{% url 'dormline:dorm_main' %}">긱라인 조회</a>
     </div>
 </section>
