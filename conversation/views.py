@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
 from .models import Talk
 from django.db.models import Q
-
+from user.models import User
 # Create your views here.
 
 def talk_page(request):
-    
-    adopting=request.user.adopt.adopting.all()
-    adopted=request.user.adopt.adopted.all()
+    me = User.objects.get(id=request.user.id)
+
+    adopting=me.adopt.adopting.all()
+    adopted=me.adopt.adopted.all()
     adopt=[]
     adopti=[]
     adopte=[]
+
     for i in adopting:
         adopti.append(i.id)
     for i in adopted:
@@ -18,19 +20,27 @@ def talk_page(request):
     for i in adopti:
         if i in adopte: #쌍방 팔로우 
             adopt.append(i)
-    print(adopt)
-  
+    # print(adopt)
 
     mine=Talk.objects.filter(writer=request.user)# 내가쓴글
 
-    pick= request.user.adopt.adopting.filter(id__in=adopt)
+    pick= me.adopt.adopting.filter(id__in=adopt)
     
-    all=[]
-    
+    all={}
+    l=[]
     for i in pick:    #나랑 연결된애
-        all.append(Talk.objects.filter(writer=i.user))
-        
-        
+        l.append(Talk.objects.filter(writer=i.user))
+    all['adopt']=l
+
+    dorm=[]
+    dormpick=me.d_followers.all()
+    dormpicked=me.d_followings.all()
+    for i in dormpick:
+        print(i.id)
+
+    up=me.s_followings.all()
+    down=me.s_followers.all()
+
     return render(request,'talk.html',{'all':all,'mine':mine})
 
 def create_talk(request):

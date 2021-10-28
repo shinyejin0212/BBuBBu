@@ -14,12 +14,11 @@ def match_view(request,id):
     res_data={}
     if other:
         other.s_followers.add(me)
-        print(other.username)
-        print(other.s_followers.name)
+        
 
         return redirect("stories:list")
     else:
-        return render('adopt_error.html')
+        return render('match_error.html')
         
 
 
