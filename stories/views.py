@@ -46,4 +46,4 @@ def update(request, id):
 def delete(request,id):
     delete_story = Story.objects.get(id=id)
     delete_story.delete()
-    return redirect("stories:list")
+    return redirect("stories:storylist")
