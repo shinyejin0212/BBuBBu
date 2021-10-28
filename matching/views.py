@@ -14,3 +14,4 @@ def match_view(request,id):
         return redirect("main")
     else:
         return render(request, 'adopt_error.html')
+        
