@@ -1,5 +1,4 @@
-
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render,redirect
 from django.contrib import auth
 from user.models import User
 from django.db.models import Q
@@ -9,20 +8,9 @@ from django.db.models import Q
 def match_view(request,id):
     me=User.objects.get(id=id)
     up=str(int(me.school_id[:4])-1)
-    other=User.objects.get(Q(school_id__startswith=up)&~Q(id=id)&Q(department=me.department)&Q(school_id__endswith=me.school_id[-3:]))
-    
-    res_data={}
+    other=User.objects.filter(Q(school_id__startswith=up)&Q(department=me.department)&Q(school_id__endswith=me.school_id[-3:]))
     if other:
-        other.s_followers.add(me)
-        print(other.username)
-        print(other.s_followers.name)
-
-        return redirect("stories:list")
+        other[0].s_followers.add(me)
+        return redirect("main")
     else:
-        return render('adopt_error.html')
-        
-
-
-
- 
-
+        return render(request, 'adopt_error.html')
