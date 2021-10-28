@@ -127,7 +127,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     #기숙사 번호
     # image = models.ImageField(upload_to="user/",blank=True, null=True)
     d_followings=models.ManyToManyField("self",related_name='d_followers',symmetrical=False)
+<<<<<<< HEAD
 
+=======
+>>>>>>> d0ad08e104a459472ccb83f94a842f08bad92073
     s_followings=models.ManyToManyField("self",related_name='s_followers',symmetrical=False)
     
     objects=UserManager()

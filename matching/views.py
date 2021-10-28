@@ -1,9 +1,26 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d0ad08e104a459472ccb83f94a842f08bad92073
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import auth
 from user.models import User
 # from .models import Match
 
+#없으면 입양하라고 추천!
+#근데 나보다 한 해 위의 사람이 있는데 이 사람이 이미 팔로워가 있으면 입양하라고 추천
+def match_view(request,id):
+    me=User.objects.get(id=id)
+    up=str(int(me.school_id[:4])-1)
+    other=User.objects.get(Q(school_id__startswith=up)&~Q(id=id)&Q(department=me.department)&Q(school_id__endswith=me.school_id[-3:]))
+    
+    res_data={}
+    if other:
+        other.s_followers.add(me)
+        print(other.username)
+        print(other.s_followers.name)
 
+<<<<<<< HEAD
 def match_main(request):
     followers=request.user.s_followers
     followings=request.user.s_followings
@@ -41,4 +58,14 @@ def match_view(request):
 
 
 
+=======
+        return redirect("stories:list")
+    else:
+        return render('adopt_error.html')
+        
+
+
+
+ 
+>>>>>>> d0ad08e104a459472ccb83f94a842f08bad92073
 
