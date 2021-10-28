@@ -28,8 +28,8 @@ urlpatterns = [
     # path('accounts/',include("allauth.urls")),
     path('stories/',include('stories.urls')),
     path('user/',include('user.urls')),
-    path('match/',include('matching.urls')),
+    path('matching/',include('matching.urls')),
     path('adopt/',include('adopt.urls')),
     path('conversation/',include('conversation.urls')),
-    path('dorm/',include('dormline.urls')),
+    path('dormline/',include('dormline.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
