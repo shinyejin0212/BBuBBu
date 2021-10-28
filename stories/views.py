@@ -5,9 +5,9 @@ from django.utils import timezone
 
 # Create your views here.
 
-def storylist(request):
+def list(request):
     stories = Story.objects.all()
-    return render(request,"storylist.html",{"stories":stories})
+    return render(request,"list.html",{"stories":stories})
 
 def new_story(request):
     return render(request,"new_story.html")
@@ -46,4 +46,4 @@ def update(request, id):
 def delete(request,id):
     delete_story = Story.objects.get(id=id)
     delete_story.delete()
-    return redirect("stories:storylist")
+    return redirect("stories:list")

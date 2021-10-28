@@ -9,15 +9,18 @@ from django.db.models import Q
 def match_view(request,id):
     me=User.objects.get(id=id)
     up=str(int(me.school_id[:4])-1)
-    other=User.objects.filter(Q(school_id__startswith=up)&~Q(id=id)&Q(department=me.department)&Q(school_id__endswith=me.school_id[-3:]))
+    other=User.objects.get(Q(school_id__startswith=up)&~Q(id=id)&Q(department=me.department)&Q(school_id__endswith=me.school_id[-3:]))
+    
     res_data={}
-    if not other:
-        return render('adopt_error.html')
+    if other:
+        other.s_followers.add(me)
+        print(other.username)
+        print(other.s_followers.name)
+
+        return redirect("stories:list")
     else:
-        for i in other:
-            i.s_followers.add(me)
-            
-        return redirect("stories:storylist")
+        return render('adopt_error.html')
+        
 
 
 
