@@ -10,8 +10,7 @@
     margin-bottom: 10px;
     padding: 10px;
     background-color: #A8DDFD;
-    width: 400px;
-    height: 65px;
+    width: 30%;
     text-align: left;
     font: 400 .9em 'Open Sans', sans-serif;
     border: 1px solid #97C6E3;
@@ -24,33 +23,37 @@
     margin-left: calc(100% - 40%);
     padding: 10px;
     background-color: #f8e896;
-    width: 400px;
-    height: 65px;
+    width: 30%;
     text-align: left;
     font: 400 .9em 'Open Sans', sans-serif;
     border: 1px solid #dfd087;
     border-radius: 10px;
+    
 }
 
 .message-content {
+    width: 100%;
     padding: 0;
     margin: 0;
+    word-break: break-all;
+    margin-bottom: 40px;
+    letter-spacing :0.5px;
 }
 
 .message-timestamp-right {
     position: absolute;
-    font-size: .85em;
+    font-size: .75em;
     font-weight: 300;
-    bottom: 5px;
-    right: 5px;
+    bottom: 8px;
+    right: 8px;
 }
 
 .message-timestamp-left {
     position: absolute;
-    font-size: .85em;
+    font-size: .75em;
     font-weight: 300;
-    bottom: 5px;
-    left: 5px;
+    bottom: 8px;
+    left: 8px;
 }
 
 .message-blue:after {
@@ -103,17 +106,38 @@
 
 </style>
 <br>
-<div class="container">
-    <div class="message-blue">
-        <p class="message-content">남이 쓴글 보이게</p>
-        <div class="message-timestamp-left">SMS 13:37</div>
-    </div>
+
+<div class="container" style="margin-top : 10%;  margin-left: 10%; margin-right: 10%;">
+    {% for i in all %}
+        {%for j in i%}   
+        <div class="message-blue">
+            <p class="message-content" >{{j.body}}</p>
+            
+            <div class="message-timestamp-left">{{j.writer}}<br>  SMS {{j.updated_at}}</div>
+        </div>
+        
+        {%endfor%}
     
-    <div class="message-orange">
-        <p class="message-content">내가 쓴글 보이게</p>
-        <div class="message-timestamp-right">SMS 13:37</div>
-    </div>
+    {%endfor%}
     
+    {% for i in mine %}
+        <div class="message-orange">
+            <p class="message-content">{{i.body}}</p>
+            <div class="message-timestamp-right">SMS {{i.updated_at}}</div>
+            <a href="{%url 'conversation:edit_talk' i.id %}">수정하기</a>
+            <a href="{%url 'conversation:delete_talk' i.id %}">삭제하기</a>
+
+        </div>
+    {%endfor%}
+    
+    
+
+    <form action="{%url 'conversation:create_talk'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <p>댓글 : <textarea style="width: 85%;" type="text" name="body" id="" cols="50" rows="3"
+                required></textarea></p>
+        <button type="submit">전송</button>
+    </form>
 </div>
 </section>
 {%endblock%}
