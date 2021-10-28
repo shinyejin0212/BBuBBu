@@ -36,7 +36,7 @@ def talk_page(request):
     dormpick=me.d_followers.all()
     dormpicked=me.d_followings.all()
     for i in dormpick:
-        print(i.id)
+        print(i.username)
 
     up=me.s_followings.all()
     down=me.s_followers.all()
