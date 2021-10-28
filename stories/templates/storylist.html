@@ -5,8 +5,10 @@
 <section id="portfolio-details" class="portfolio-details">
     <div class="container">
         <h3><a style="color:black;" href="{% url 'stories:new_story' %}">나의 뻔모임은?</a></h3><br>
+        <h3><a style="color:black;" href="{% url 'adopt:adopt_main'%}">입양?</a></h3><br>
+        <h3><a style="color:black;" href="{% url 'dormline:dorm_main' %}">긱라인?</a></h3><br>
 
-        <h3><a style="color:black;" href="{% url 'stories:new_story' %}">글쓰기</a></h3><br>
+        <h3><a style="color:black;" href="{% url 'stories:new_story' %}">후기 글쓰기</a></h3><br>
         {%for story in stories%}
            
             <div class="col-lg-12">
