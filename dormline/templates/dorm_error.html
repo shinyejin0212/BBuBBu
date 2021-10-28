@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if request.user.is_dorm == 'no' %}
+
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>긱라인 조회</h2>
+      </div>
+      <div >
+        <div >
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <h2 style="font-weight: bold;">기숙사생이 아닙니다!</h2>
+                  <p><br><br>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    
+                    기숙사생이시면 회원정보 수정을 해주세요
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section><!-- End Testimonials Section -->
+{% endif %}
+
+{%endblock%}

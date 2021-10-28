@@ -23,7 +23,7 @@
         <li><a href="{% url 'user:profile' request.user.id %}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Profile</span></a></li>
         <li><a href="{% url 'conversation:talk_page'%}" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Talk</span></a></li>
         <li><a href="{% url 'adopt:adopt_main'%}" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>입양하기</span></a></li>
-        <li><a href="{% url 'dormline:dorm_main' %}" class="nav-link scrollto"><i class="bx bx-server"></i> <span>긱라인</span></a></li>
+        <li><a href="{% url 'dormline:view_random' request.user.id %}" class="nav-link scrollto"><i class="bx bx-server"></i> <span>긱라인</span></a></li>
         {% endif %}
         <li><a href="{%url 'stories:list' %}" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>후기 포스팅</span></a></li>
       </ul>
