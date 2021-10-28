@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+        <h3><a style="color:black;" href="{% url 'matching:match_view' request.user.id %}">나의 뻔모임은?</a></h3><br>
+        <h3><a style="color:black;" href="{% url 'adopt:adopt_main'%}">입양?</a></h3><br>
+        <h3><a style="color:black;" href="{% url 'dormline:dorm_main' %}">긱라인?</a></h3><br>
+    </div>
+    <div>
+        긱라인 팔로잉
+        {% if request.user.d_followings.all %}
+            {%for a in request.user.d_followings.all %}
+                {{a.name}}
+            {% endfor %}
+        {% else %}
+            없습니다.
+        {% endif %}
+<br>
+        긱라인 팔로워
+        {% if request.user.d_followers.all %}
+            {%for b in request.user.d_followers.all %}
+                {{b.name}}
+            {% endfor %}
+        {% else %}
+            없습니다.
+        {% endif %}
+<br>
+        뻔라인 팔로잉
+        {% if request.user.s_followings.all %}
+            {%for c in request.user.s_followings.all %}
+                {{c.name}}
+            {% endfor %}
+        {% else %}
+            없습니다.
+        {% endif %}
+<br>
+        뻔라인 팔로워
+        {% if request.user.s_followers.all %}
+            {%for d in request.user.s_followers.all %}
+                {{d.name}}
+            {% endfor %}
+        {% else %}
+            없습니다.
+        {% endif %}
+<br>
+    </div>
+</section>
+{%endblock%}
