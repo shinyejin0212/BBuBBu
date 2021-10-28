@@ -46,9 +46,10 @@
                     <br>
         
                     <ul>
+                    {% if story.writer == request.user %}
                         <a class="btn btn-dark" href="{% url 'stories:edit_story' story.id %}">수정하기</a>
                         <a class="btn btn-dark" href="{% url 'stories:delete' story.id %}">삭제하기</a>
-
+                    {% endif%}
                     </ul>
                 </div>
             </div>
