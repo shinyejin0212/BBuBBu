@@ -4,7 +4,7 @@ from .views import *
 app_name="stories"
 
 urlpatterns = [
-    path('storylist/',storylist,name="storylist"),
+    path('list/',list,name="list"),
     path('new_story/',new_story,name="new_story"),
     path('create/',create,name="create"),
     path('detail<int:id>',detail,name="detail"),
