@@ -8,12 +8,13 @@ from django.db.models import Q
 import random
 # Create your views here.
 
-def dorm_main(request):
-    followers=request.user.d_followers
-    return render(request, 'dorm_main.html',{'followers':followers})
 
 def view_random(request, id):
     me=User.objects.get(id=id)
+    if me.is_dorm == 'no':
+        #기숙사 생이 아니면
+        return render(request, 'dorm_error.html')
+
     me_id=int(me.dorm_id)
     floor=me_id//1000
     room=me_id%1000
@@ -28,7 +29,6 @@ def view_random(request, id):
     else:
         #팔로워가 있으면
         others=User.objects.filter(Q(d_followers__isnull=True)&Q(dorm_id__startswith=floor)&~Q(dorm_id=me_id)&~Q(dorm_id=0)&~Q(dorm_id='')&~Q(username=my_followers[0].username)).order_by('?')[:5]
-
     return render(request, 'dorm_rand.html',{'others':others})
 
  
@@ -36,5 +36,5 @@ def follow(request, id):
     me=User.objects.get(id=request.user.id)
     target=User.objects.get(id=id)
     target.d_followers.add(me)
-    return redirect('dormline:dorm_main')
+    return redirect('main')
 
