@@ -11,20 +11,22 @@
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
 
-                        <div class="swiper-slide">
+                        {% comment %} <div class="swiper-slide">
                             <img src="{% static 'img/portfolio/portfolio-details-1.jpg' %}" alt="">
-                        </div>
+                        </div> {% endcomment %}
 
-                        <div class="swiper-slide">
-                            <img src="{% static 'img/portfolio/portfolio-details-2.jpg' %}" alt="">
-                        </div>
 
-                        <div class="swiper-slide">
+                        {% comment %} <div class="swiper-slide">
                             <img src="{% static 'img/portfolio/portfolio-details-3.jpg' %}" alt="">
-                        </div>
+                        </div> {% endcomment %}
                         {%if story.image%}
                         <div class="swiper-slide">
                             <img src="{{story.image.url}}" alt="img">
+                        </div>
+                        {%else%}
+
+                        <div class="swiper-slide">
+                            <img src="{% static 'img/portfolio/portfolio-details-2.jpg' %}" alt="">
                         </div>
                         {%endif%}
                     </div>
@@ -44,9 +46,10 @@
                     <br>
         
                     <ul>
+                    {% if story.writer == request.user %}
                         <a class="btn btn-dark" href="{% url 'stories:edit_story' story.id %}">수정하기</a>
                         <a class="btn btn-dark" href="{% url 'stories:delete' story.id %}">삭제하기</a>
-
+                    {% endif%}
                     </ul>
                 </div>
             </div>

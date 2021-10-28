@@ -13,7 +13,7 @@
       </h6></p>
         
       {% if user.is_authenticated %}
-      <button type="button"  class="btn"> <a href="{%url 'main' %}" > 입장하기</a></button> <!--수정필요-->
+      <button type="button"  class="btn"> <a href="{%url 'main' %}" > 입장하기</a></button> 
       <button type="button"  class="btn"> <a href="{%url 'user:logout' %}" > 로그아웃</a></button>
       {% else %}
         
