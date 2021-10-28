@@ -27,23 +27,25 @@
         {% else %}
             없습니다.
         {% endif %}
-<br>
-        뻔라인 팔로잉
+<br>    
+        <!-- 뻔라인 팔로잉 -->
+        
         {% if request.user.s_followings.all %}
             {%for c in request.user.s_followings.all %}
-                {{c.name}}
+                뻔선은{{c.name}} 입니다.
             {% endfor %}
         {% else %}
-            없습니다.
+            뻔선이 없습니다.
         {% endif %}
 <br>
-        뻔라인 팔로워
+        <!-- 뻔라인 팔로워 -->
+       
         {% if request.user.s_followers.all %}
             {%for d in request.user.s_followers.all %}
-                {{d.name}}
+                뻔후는 {{d.name}} 입니다.
             {% endfor %}
         {% else %}
-            없습니다.
+             뻔후가 없습니다.
         {% endif %}
 <br>
     </div>
