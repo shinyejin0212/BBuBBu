@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{{request.user.d_followings.all}}
+
+{% if request.user.is_dorm == 'no' %}
+기숙사생이 아닙니다
+{% endif %}
+
+{% if request.user.d_followings.all %}
+이미 긱라인을 팔로우 했습니다.
+{% endif  %}
+
+{%endblock%}
