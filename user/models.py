@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User,BaseUserManager,AbstractBaseUser,PermissionsMixin
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+
 # Create your models here.
 
 class UserManager(BaseUserManager):
@@ -127,6 +128,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     # image = models.ImageField(upload_to="user/",blank=True, null=True)
     d_followings=models.ManyToManyField("self",related_name='d_followers',symmetrical=False)
 
+    s_followings=models.ManyToManyField("self",related_name='s_followers',symmetrical=False)
+    
     objects=UserManager()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
