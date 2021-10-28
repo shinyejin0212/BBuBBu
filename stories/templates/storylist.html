@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
 <section id="portfolio-details" class="portfolio-details">
     <div class="container">
         <h3><a style="color:black;" href="{% url 'stories:new_story' %}">나의 뻔모임은?</a></h3><br>
@@ -22,7 +23,11 @@
            
         {%endfor%}
 
+        <div class="col-12">
+            {{ alarm }}
+        </div>
 
+        <h3><a style="color:black;" href="{% url 'matching:match_view' request.user.id %}">뻔라인 조회</a></h3><br>
         <a href="{% url 'dormline:dorm_main' %}">긱라인 조회</a>
     </div>
 </section>
