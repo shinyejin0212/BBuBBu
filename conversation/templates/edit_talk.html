@@ -5,104 +5,257 @@
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
 
     .message-blue {
-        position: relative;
-        margin-left: 40px;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: #A8DDFD;
-        width: 30%;
-        text-align: left;
-        font: 400 .9em 'Open Sans', sans-serif;
-        border: 1px solid #97C6E3;
-        border-radius: 10px;
-    }
+    position: relative;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: #fe7f5d;
+    width: 30%;
+    text-align: left;
+    font: 400 1.0em 'Open Sans', sans-serif;
+    border: none;
+    border-radius: 18px;
+    color:#fff;
+    font-style: bold;
+    opacity: 0.85;
+    font-weight: bold;
+}
 
-    .message-orange {
-        position: relative;
-        margin-bottom: 10px;
-        margin-left: calc(100% - 40%);
-        padding: 10px;
-        background-color: #f8e896;
-        width: 30%;
-        text-align: left;
-        font: 400 .9em 'Open Sans', sans-serif;
-        border: 1px solid #dfd087;
-        border-radius: 10px;
+.message-orange {
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: calc(100% - 40%);
+    padding: 10px;
+    background-color: #F8FAFC;
+    width: 30%;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    font-weight: bold;
+    
+}
 
-    }
+.message-content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    word-break: break-all;
+    margin-bottom: 60px;
+    letter-spacing :0.5px;
+}
 
-    .message-content {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        word-break: break-all;
-        margin-bottom: 60px;
-        letter-spacing: 0.5px;
-    }
+.message-timestamp-right {
+    position: absolute;
+    font-size: .75em;
+    font-weight: 300;
+    bottom: 8px;
+    right: 8px;
+}
 
-    .message-timestamp-right {
-        position: absolute;
-        font-size: .75em;
-        font-weight: 300;
-        bottom: 8px;
-        right: 8px;
-    }
+.message-timestamp-left {
+    position: absolute;
+    font-size: .75em;
+    font-weight: 300;
+    bottom: 8px;
+    left: 8px;
+    padding-left: 13px;
+}
 
-    .message-timestamp-left {
-        position: absolute;
-        font-size: .75em;
-        font-weight: 300;
-        bottom: 8px;
-        left: 8px;
-    }
+.message-state{
+    display:inline-block; 
+    border-radius:2px; 
+    font-size : 0.75em; 
+    padding:2px; 
+    background:#fe7f5d;
+    color: black;
+    
 
-    .message-blue:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-top: 15px solid #A8DDFD;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        top: 0;
-        left: -15px;
-    }
+}
+/* 
+.message-blue:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #A8DDFD;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    top: 0;
+    left: -15px;
+} */
 
-    .message-blue:before {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-top: 17px solid #97C6E3;
-        border-left: 16px solid transparent;
-        border-right: 16px solid transparent;
-        top: -1px;
-        left: -17px;
-    }
+/* .message-blue:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 17px solid #97C6E3;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    top: -1px;
+    left: -17px;
+} */
 
-    .message-orange:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-bottom: 15px solid #f8e896;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        bottom: 0;
-        right: -15px;
-    }
+/* .message-orange:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #f8e896;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    bottom: 0;
+    right: -15px;
+}
 
-    .message-orange:before {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-bottom: 17px solid #dfd087;
-        border-left: 16px solid transparent;
-        border-right: 16px solid transparent;
-        bottom: -1px;
-        right: -17px;
-    }
+.message-orange:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 17px solid #dfd087;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    bottom: -1px;
+    right: -17px;
+} */
+
+.talk-input {
+    resize:none;
+    /* Type=Counter, State=Required */
+
+    /* Auto Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: absolute;
+    width: 460px;
+    height: 188px;
+    left: 17px;
+    top: 964px;
+
+
+
+    /* Краткое описание проблемы * */
+
+    position: static;
+    width: 460px;
+    height: 23px;
+    left: 0px;
+    top: 0px;
+
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 140%;
+    /* identical to box height, or 22px */
+
+    /* Text / Secondary - Grey2 */
+    color: #6F7482;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 2px 0px;
+
+
+    /* Text Block */
+
+    /* Auto Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 12px;
+
+    position: static;
+    width: 460px;
+    height: 163px;
+    left: 0px;
+    top: 25px;
+
+    /* Surface/Light */
+    background: #F8FAFC;
+    border-radius: 4px;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 2px 0px;
+
+
+    /* Hint text */
+
+    position: static;
+    height: 115px;
+    left: 12px;
+    right: 12px;
+    top: 12px;
+
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 143%;
+    /* or 23px */
+
+    /* Text / Secondary - Grey3 */
+    color: #B8BCCA;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 8px 0px;
+
+
+    /* Value */
+
+    position: static;
+    width: 94px;
+    height: 16px;
+    right: 12px;
+    top: 135px;
+
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+    text-align: right;
+
+    /* Text / Secondary - Grey2 */
+    color: #6F7482;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 8px 0px;
+
+}
+
+
+
+
+.content {
+    margin-top : 10%;  
+    margin-left: 10%; 
+    margin-right: 10%;
+}
+   
 </style>
 <br>
 
@@ -131,17 +284,17 @@
     {% else %}
     <div style="margin-left:40px; margin-bottom:2px;">
         {% if j.writer.id in num %}
-        <div style="display:inline-block; border-radius:2px; font-size : 0.75em; padding:2px; background:lightblue">뻔선뻔후
+        <div class="message-state">뻔선뻔후
         </div>
         {% endif %}
 
         {% if j.writer.id in adopt %}
-        <div style="display:inline-block; border-radius:2px; font-size : 0.75em; padding:2px; background:lightblue">입양
+        <div class="message-state">입양
         </div>
         {% endif %}
 
         {% if j.writer.id in dorm %}
-        <div style="display:inline-block; border-radius:2px; font-size : 0.75em; padding:2px; background:lightblue">긱라인
+        <div class="message-state">긱라인
         </div>
         {% endif %}
     </div>
