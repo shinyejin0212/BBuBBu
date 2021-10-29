@@ -4,21 +4,21 @@
 <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
 
-      <h1><p>동국대학생 교류 서비스 <span class="typed" data-typed-items=", 뿌뿌 "></span></p></h1>
+      <h1 ><p class="head-title">동국대학생 교류 서비스 <span class="typed" data-typed-items=", 뿌뿌 "></span></p></h1>
       
       <br>
-      <p><h6>여러 대학교에는 현재 뻔문화라는 것이 존재합니다.<br>
+      <p><h4>여러 대학교에는 현재 뻔문화라는 것이 존재합니다.<br>
           뻔 문화란 뒷자리 학번이 같은 뻔선배 뻔후배 간의 관계에서 비롯한 문화를 의미합니다.<br>
           학번을 통해 선후배 관계를 맺는 문화인 뻔문화를 동국대학교에서도 누려보세요.
-      </h6></p>
+        </h4></p>
         
       {% if user.is_authenticated %}
       <button type="button"  class="btn"> <a href="{%url 'main' %}" > 입장하기</a></button> 
       <button type="button"  class="btn"> <a href="{%url 'user:logout' %}" > 로그아웃</a></button>
       {% else %}
         
-      <button type="button"  class="btn"> <a href="{%url 'user:login' %}" >login</a></button>
-      <button type="button"  class="btn"> <a href="{%url 'user:signup' %}" >signup</a></button>
+      <button type="button"  class="btn"> <a href="{%url 'user:login' %}" >로그인</a></button>
+      <button type="button"  class="btn"> <a href="{%url 'user:signup' %}" >로그아웃</a></button>
 
       {% endif %}
     </div>

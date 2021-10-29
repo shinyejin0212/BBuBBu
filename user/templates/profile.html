@@ -11,7 +11,8 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    cursor: pointer
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .card:before {
@@ -21,7 +22,7 @@ body {
     top: 0;
     width: 4px;
     height: 100%;
-    background-color: #E1BEE7;
+    background-color: #ffd5d9;
     transform: scaleY(1);
     transition: all 0.5s;
     transform-origin: bottom
@@ -34,7 +35,7 @@ body {
     top: 0;
     width: 4px;
     height: 100%;
-    background-color: #8E24AA;
+    background-color: #fe7f5d;
     transform: scaleY(0);
     transition: all 0.5s;
     transform-origin: bottom
@@ -57,21 +58,22 @@ body {
 
 .social-list li {
     padding: 10px;
-    color: #8E24AA;
+    color: #fe7f5d;
     font-size: 19px
 }
 
 .buttons button:nth-child(1) {
-    border: 1px solid #8E24AA !important;
-    color: #8E24AA;
+    border: 1px solid #fe7f5d !important;
+    color: #fff;
     height: 40px
 }
 
 .buttons button:nth-child(1):hover {
-    border: 1px solid #8E24AA !important;
+    border: 1px solid #fe7f5d !important;
     color: #fff;
     height: 40px;
-    background-color: #8E24AA
+    background-color: #fe7f5d;
+    
 }
 
 .buttons button:nth-child(2) {
@@ -79,6 +81,18 @@ body {
     background-color: #8E24AA;
     color: #fff;
     height: 40px
+}
+
+.bg-secondary p-1 px-4 rounded text-white{
+    background-color: #fe7f5d;
+}
+
+.modify-info {
+    color:#fe7f5d;
+}
+
+.modify-info:hover {
+    color:#fff;
 }
 
 </style>
@@ -138,7 +152,7 @@ body {
                         
                         </div>
                         {%endif%}
-                    <div class="buttons"> <button class="btn btn-outline-primary px-4"><a href="{%url 'user:edit' profile.id %}">개인정보 수정하기</a></button></div>
+                    <div class="buttons"> <button class="btn btn-outline-primary px-4"><a class="modify-info" href="{%url 'user:edit' profile.id %}">개인정보 수정하기</a></button></div>
                     
                 
                 </div>
