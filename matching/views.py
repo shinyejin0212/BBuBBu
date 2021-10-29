@@ -13,4 +13,4 @@ def match_view(request,id):
         other[0].s_followers.add(me)
         return redirect("main")
     else:
-        return render(request, 'adopt_error.html')
+        return render(request, 'match_error.html')
