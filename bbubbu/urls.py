@@ -25,6 +25,7 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name="index"),
+    path('main/',main, name='main'),
     # path('accounts/',include("allauth.urls")),
     path('stories/',include('stories.urls')),
     path('user/',include('user.urls')),
