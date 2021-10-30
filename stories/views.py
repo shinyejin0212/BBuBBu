@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from .models import Story
 from django.utils import timezone
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def list(request):
     stories = Story.objects.all()
     return render(request,"list.html",{"stories":stories})
+
 
 def new_story(request):
     return render(request,"new_story.html")
@@ -29,9 +30,11 @@ def detail(request,id):
 
     return render(request, "detail.html",{"story":story})
 
+
 def edit_story(request,id):
     story = Story.objects.get(id=id)
     return render(request,"edit_story.html",{"story":story})
+
 
 def update(request, id):
     update_story=Story.objects.get(id=id)
@@ -42,6 +45,7 @@ def update(request, id):
     update_story.updated_at = timezone.now()
     update_story.save()
     return redirect("stories:detail",update_story.id)
+
 
 def delete(request,id):
     delete_story = Story.objects.get(id=id)
