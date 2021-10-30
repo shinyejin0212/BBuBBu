@@ -7,15 +7,16 @@
 </style>
 
 <section id="portfolio-details"  class="portfolio-details">
-    
+{% if stroy.writer == user %}
+          
     <header class="py-5">
         <div class="container px-lg-5">
             <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                 <div class="m-4 m-lg-5">
-                    <h1 class="display-5 fw-bold">후기 포스팅</h1><br><br>
-                    <p class="fs-4" >뻔라인, 긱라인, 입양을 사용한 유저들의 후기입니다!<br> 여러분의 이야기도 들려주세요!</p><br>
+                    <h1 class="display-5 fw-bold">내가 작성한 후기</h1><br><br>
+                    <p class="fs-4" >내가 그동안 작성한 후기입니다!</p>
                     <a class="btn btn-primary btn-lg" href="{% url 'stories:new_story' %}" style="background-color:#fe7f5d; border-color:white;">후기 작성하기</a>
-                    <a class="btn btn-primary btn-lg" href="{% url 'stories:my_story' %}" style="background-color:#fe7f5d; border-color:white;">내 후기 모아보기</a>
+                    <a class="btn btn-primary btn-lg" href="{% url 'stories:list' %}" style="background-color:#fe7f5d; border-color:white;">모든 후기 보러가기</a>
                 </div>
             </div>
         </div>
@@ -23,8 +24,7 @@
     
     <div class="container" style="margin-top : 5%;  margin-left: 10%; margin-right: 10%;">
 
- 
-       
+    
         {%for story in stories%}
            
             <div class="col-lg-12">
@@ -40,10 +40,24 @@
             </div>
            
         {%endfor%}
+    
+{% else %}
+    <header class="py-5">
+        <div class="container px-lg-5">
+            <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                <div class="m-4 m-lg-5">
+                    <h1 class="display-5 fw-bold">내가 작성한 후기</h1><br><br>
+                    <p class="fs-4" >내가 작성한 후기가 없습니다!</p><br>
+                    <a class="btn btn-primary btn-lg" href="{% url 'stories:new_story' %}" style="background-color:#fe7f5d; border-color:white;">후기 작성하기</a>
+                    <a class="btn btn-primary btn-lg" href="{% url 'stories:list' %}" style="background-color:#fe7f5d; border-color:white;">모든 후기 보러가기</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
         
 
     </div>
-    
+{% endif %}
 </section>
 {%endblock%}

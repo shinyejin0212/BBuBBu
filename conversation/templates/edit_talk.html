@@ -2,12 +2,11 @@
 {% load static %}
 {% block content %}
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
-
-    .message-blue {
+.message-blue {
     position: relative;
     margin-left: 40px;
     margin-bottom: 10px;
+    margin-top: 5px;
     padding: 15px;
     background-color: #fe7f5d;
     width: 30%;
@@ -17,14 +16,16 @@
     border-radius: 18px;
     color:#fff;
     font-style: bold;
-    opacity: 0.85;
+    opacity: 0.9;
     font-weight: bold;
 }
 
 .message-orange {
     position: relative;
-    margin-bottom: 10px;
-    margin-left: calc(100% - 40%);
+    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-left: calc(100% - 35%);
+    margin-right: 40px;
     padding: 10px;
     background-color: #F8FAFC;
     width: 30%;
@@ -32,7 +33,7 @@
     font: 400 .9em 'Open Sans', sans-serif;
     border: 1px solid #dcdcdc;
     border-radius: 10px;
-    font-weight: bold;
+    align-content: left;
     
 }
 
@@ -64,7 +65,8 @@
 
 .message-state{
     display:inline-block; 
-    border-radius:2px; 
+    border-radius:2px;
+    margin-top: 20px; 
     font-size : 0.75em; 
     padding:2px; 
     background:#fe7f5d;
@@ -123,154 +125,78 @@
 
 .talk-input {
     resize:none;
-    /* Type=Counter, State=Required */
-
-    /* Auto Layout */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-
-    position: absolute;
-    width: 460px;
-    height: 188px;
-    left: 17px;
-    top: 964px;
-
-
-
-    /* Краткое описание проблемы * */
-
-    position: static;
-    width: 460px;
-    height: 23px;
-    left: 0px;
-    top: 0px;
-
-    font-family: IBM Plex Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 140%;
-    /* identical to box height, or 22px */
-
-    /* Text / Secondary - Grey2 */
-    color: #6F7482;
-
-
-    /* Inside Auto Layout */
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    margin: 2px 0px;
-
-
-    /* Text Block */
-
-    /* Auto Layout */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding: 12px;
-
-    position: static;
-    width: 460px;
-    height: 163px;
-    left: 0px;
-    top: 25px;
-
-    /* Surface/Light */
     background: #F8FAFC;
-    border-radius: 4px;
-
-    /* Inside Auto Layout */
     flex: none;
     order: 1;
     align-self: stretch;
     flex-grow: 0;
-    margin: 2px 0px;
-
-
-    /* Hint text */
-
-    position: static;
-    height: 115px;
+    margin: 2px 0px 0px 0px;
     left: 12px;
-    right: 12px;
-    top: 12px;
-
-    font-family: IBM Plex Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 143%;
-    /* or 23px */
-
-    /* Text / Secondary - Grey3 */
     color: #B8BCCA;
-
-
-    /* Inside Auto Layout */
-    flex: none;
-    order: 0;
     align-self: stretch;
-    flex-grow: 0;
-    margin: 8px 0px;
-
-
-    /* Value */
-
     position: static;
-    width: 94px;
-    height: 16px;
     right: 12px;
     top: 135px;
-
     font-family: IBM Plex Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 100%;
-    /* identical to box height, or 16px */
-    text-align: right;
-
-    /* Text / Secondary - Grey2 */
+    text-align: left;
     color: #6F7482;
-
-
-    /* Inside Auto Layout */
     flex: none;
     order: 1;
     flex-grow: 0;
-    margin: 8px 0px;
+    margin:content;
 
+}
+
+
+.edit_textarea{
+    resize: none;
+    border-radius: 5px;
 }
 
 
 
 
+   
 .content {
     margin-top : 10%;  
     margin-left: 10%; 
     margin-right: 10%;
+    margin-bottom: 10%;
+    border: 5px solid #fe7f5d;
+    border-radius: 30px;
 }
-   
+
+.comment{
+    display: inline-block;
+    margin-left: 30px;
+    
+}
 </style>
 <br>
 
-<div class="container" style="margin-top : 10%;  margin-left: 10%; margin-right: 10%;">
-
+<div class="container" >
+    <!-- style="margin-top : 10%;  margin-left: 10%; margin-right: 10%;" -->
+    <div class="content">
+    
+        
     {% for j in l %}
     {% if j.writer == me %}
         {% if j == talk %}
         <form action="{%url 'conversation:update_talk' talk.id %}" method="post" enctype="multipart/form-data">
             {%csrf_token%}
             <div class="message-orange">
-                <textarea required type="text" name="body" rows="5"
-                    style="width: 100%; margin-bottom: 40px;">{{j.body}}</textarea>
+                <textarea required type="text" name="body" rows="5" class="edit_textarea"
+                style="width: 100%; margin-bottom: 40px; margin-top: 0px; height: 107px;">{{j.body}}</textarea>
                 <div class="message-timestamp-right">SMS {{j.updated_at}}</div>
-                <button type="submit">수정하기</button>
+                <button type="submit" style="border-radius: 5px;">수정하기</button>
             </div>
         </form>
         {%else%}
@@ -307,6 +233,7 @@
 
     {%endfor%}
 
+</div>
 </div>
 </section>
 {%endblock%}

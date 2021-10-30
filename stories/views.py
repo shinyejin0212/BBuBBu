@@ -12,6 +12,10 @@ def list(request):
 def new_story(request):
     return render(request,"new_story.html")
 
+def my_story(request):
+    stories = Story.objects.all()
+    return render(request,"my_story.html",{"stories":stories})
+
 def create(request):
     new_story=Story()
     new_story.title = request.POST["title"]
