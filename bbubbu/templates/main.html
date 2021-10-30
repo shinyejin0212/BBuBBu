@@ -2,52 +2,123 @@
 {% load static %}
 {% block content %}
 
-<section id="portfolio-details" class="portfolio-details">
-    <div class="container">
 
-        <h3><a style="color:black;" href="{% url 'matching:match_view' request.user.id %}">나의 뻔모임은?</a></h3><br>
-        <h3><a style="color:black;" href="{% url 'adopt:adopt_main'%}">입양?</a></h3><br>
-        <h3><a style='color:black;' href="{%url 'dormline:view_random' request.user.id %}">긱라인?</a></h3><br>
+
+  <section id="services" class="services">
+      <br><br><br>
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>HELLO !</h2>
+        <br>
+        <p>"뻔라인"을 누르시면 뻔라인을 조회하실 수 있습니다. <br>"긱라인"을 누르시면 긱라인을 조회하실 수 있습니다.<br>라인이 없으시다면 '입양'을 추천드릴게요! 🐰</p>
+      </div>
+      <br><br><br>
+      <div class='row' style="justify-content: space-around;">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box iconbox-orange">
+            <div class="icon"><i class="bx bx-file"></i></div>
+            <h4><a href="{% url 'matching:match_view' request.user.id %}">뻔라인</a></h4>
+            <p>같은 학과, 학번 뒤 세자리가 같은 한 학번 선배를 자동 팔로잉 해드립니다 :)</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon-box iconbox-yellow">
+            <div class="icon"><i class="bx bx-tachometer"></i></div>
+            <h4><a href="{%url 'dormline:view_random' request.user.id %}">긱라인</a></h4>
+            <p>같은 층의 학생을 랜덤으로 다섯명 리스트업합니다 :)</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon-box iconbox-orange">
+            <div class="icon"><i class="bx bx-world"></i></div>
+            <h4><a href="{% url 'adopt:adopt_main'%}">입양하기</a></h4>
+            <p>뻔라인과 긱라인이 없다면 입양을 클릭해주세요 :)</p>
+          </div>
+        </div>
     </div>
-    <div>
-        긱라인 팔로잉
-        {% if request.user.d_followings.all %}
-            {%for a in request.user.d_followings.all %}
-                {{a.name}}
-            {% endfor %}
-        {% else %}
-            없습니다.
-        {% endif %}
-    <br>
-        긱라인 팔로워
-        {% if request.user.d_followers.all %}
-            {%for b in request.user.d_followers.all %}
-                {{b.name}}
-            {% endfor %}
-        {% else %}
-            없습니다.
-        {% endif %}
-<br>    
-        <!-- 뻔라인 팔로잉 -->
-        
-        {% if request.user.s_followings.all %}
-            {%for c in request.user.s_followings.all %}
-                뻔선은{{c.name}} 입니다.
-            {% endfor %}
-        {% else %}
-            뻔선이 없습니다.
-        {% endif %}
-<br>
-        <!-- 뻔라인 팔로워 -->
-       
-        {% if request.user.s_followers.all %}
-            {%for d in request.user.s_followers.all %}
-                뻔후는 {{d.name}} 입니다.
-            {% endfor %}
-        {% else %}
-             뻔후가 없습니다.
-        {% endif %}
-<br>
     </div>
-</section>
+  </section>
+<br><br><br>
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>MY FOLLOWING <br> MY FOllOWER<br></h2>
+        <br>
+      </div>
+
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+   
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+              <h3>나의 뻔선</h3>
+              <br>
+              {% if request.user.s_followings.all %}
+              {% for a in request.user.s_followings.all %}
+              <h4>{{a.name}}</h4>
+              <h4>{{a.department}}</h4>
+              {% endfor %}
+              {% else %}
+              <h4>아직 없습니다 :(</h4>
+              {% endif %}
+            </div>
+          </div><!-- End testimonial item -->
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+              <h3>나의 뻔후</h3>
+              <br>
+              {% if request.user.s_followers.all %}
+              {% for a in request.user.s_followers.all %}
+              <h4>{{a.name}}</h4>
+              <h4>{{a.department}}</h4>
+              {% endfor %}
+              {% else %}
+              <h4>아직 없습니다 :(</h4>
+              {% endif %}
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+              <h3>긱라인 FOLLOWING</h3>
+              <br>
+              {% if request.user.d_followings.all %}
+              {% for a in request.user.d_followings.all %}
+              <h4>{{a.name}}</h4>
+              <h4>{{a.department}}</h4>
+              {% endfor %}
+              {% else %}
+              <h4>아직 없습니다 :(</h4>
+              {% endif %}
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+              <h3>긱라인 FOLLOWER</h3>
+              <br>
+              {% if request.user.d_followers.all %}
+              {% for a in request.user.d_followers.all %}
+              <h4>{{a.name}}</h4>
+              <h4>{{a.department}}</h4>
+              {% endfor %}
+              {% else %}
+              <h4>아직 없습니다 :(</h4>
+              {% endif %}
+            </div>
+          </div><!-- End testimonial item -->
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section>
 {%endblock%}

@@ -7,7 +7,7 @@
         <h2>긱라인 조회</h2>
         <p>긱라인 조회 페이지입니다.<br>같은 층의 학생을 최대 5명 랜덤으로 리스트업한 목록입니다. <br>학과와 이름을 보고 팔로잉해주세요.🐰 </p>
       </div>
-      <div class="row">
+      <div class="row" style="justify-content: space-around;">
         {% if request.user.d_followings.all %}
         <div class="col-lg-4 col-md-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box iconbox-red">
@@ -18,7 +18,7 @@
                 
               </div>
               <h4><a href="">Error!</a></h4>
-              <p>이미 팔로잉이 되어있습니다 !</p>
+              <p>이미 팔로잉이 되어있습니다 !<br>팔로잉은 한 명만 가능합니다 :)</p>
             </div>
         </div>
         {% elif not others.all %}

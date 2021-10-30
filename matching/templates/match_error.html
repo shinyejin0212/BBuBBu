@@ -1,1 +1,36 @@
-없음
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>뻔라인 조회</h2>
+      </div>
+      <div >
+        <div >
+            <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <h2 style="font-weight: bold;">아직 내 뻔선이 없습니다 💦</h2>
+                  <p><br><br>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    '입양'을 추천드릴게요!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i> 
+                    <br><br>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    뻔선이 가입한 후 '뻔라인' 조회를 하시면 자동으로 팔로잉이 됩니다.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+            </div><!-- End testimonial item -->
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section><!-- End Testimonials Section -->
+
+{%endblock%}
