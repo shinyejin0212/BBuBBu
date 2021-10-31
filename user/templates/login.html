@@ -61,9 +61,20 @@
 
 #confirmBtn {
   margin-top: 10px;
+  width: 200px;
+  color: white;
+  background-color: #ff8668;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+.sign {
+  margin-top: 10px;
   width: 250px;
   color: white;
-  background-color: #322072;
+  background-color: #ff8668;
   padding: 6px;
   border: none;
   border-radius: 8px;
@@ -87,9 +98,11 @@
                 <div class="signup_input_container">
                     <div class="signup_input_title">비밀번호</div>
                     <input type="password" class="signup" name="password" placeholder="비밀번호">
+        
                 </div>
                 <br>
                 <button id="confirmBtn" type="submit">완료</button>
+                <a class="sign" href="{%url 'user:signup' %}">회원가입</a>
             </form>
         </div>
     </div>

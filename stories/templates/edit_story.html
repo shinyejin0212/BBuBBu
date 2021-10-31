@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<style>
+.confirmBtn {
+  margin-top: 10px;
+  width: 100px;
+  color: white;
+  background-color: #ff8668;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+</style>
     <section id="portfolio-details" class="portfolio-details">
     <div class="container">
         <form action="{%url 'stories:update' story.id %}" method="post" enctype="multipart/form-data">
@@ -9,7 +22,7 @@
             <p>사진 : <input value="{{story.image}}" type="file" name="image">{{story.image}}</p>
             <p>내용 : <textarea style="width: 100%;" type="text" name="body" id="" cols="50" rows="10"
                     required>{{story.body}}</textarea></p>
-            <button type="submit">제출</button>
+            <button class="confirmBtn" type="submit">제출</button>
         </form>
         </div>
     </section>
