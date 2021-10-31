@@ -5,8 +5,11 @@
 <section id="portfolio-details"  class="portfolio-details">
     <div class="container" style="margin-top : 5%;  margin-left: 10%; margin-right: 10%;">
 
- 
+        {% if user.is_authenticated %}
         <h3><a style="color:black;" href="{% url 'stories:new_story' %}">후기 글쓰기</a></h3><br>
+        {%else%}
+        <h3><a style="color:black;" href="{% url 'user:login' %}">후기 글쓰기</a></h3><br>
+        {%endif%}
         {%for story in stories%}
            
             <div class="col-lg-12">
