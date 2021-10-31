@@ -242,7 +242,11 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
+<<<<<<< HEAD
+  background: url("../img/동대뿌뿌.jpg") top right no-repeat;
+=======
   background: url("../img/bbubbu.jpeg") top right no-repeat;
+>>>>>>> 161abdad47e8784316e65324cfc3ab8780b552c7
   background-size: cover;
   position: relative;
 }

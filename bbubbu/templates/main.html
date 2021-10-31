@@ -54,7 +54,7 @@
    
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+              <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
               <h3>나의 뻔선</h3>
               <br>
               {% if request.user.s_followings.all %}
@@ -69,7 +69,7 @@
           </div><!-- End testimonial item -->
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+              <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
               <h3>나의 뻔후</h3>
               <br>
               {% if request.user.s_followers.all %}
@@ -85,7 +85,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+              <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
               <h3>긱라인 FOLLOWING</h3>
               <br>
               {% if request.user.d_followings.all %}
@@ -101,7 +101,7 @@
 
           <div class="swiper-slide">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+              <img src="{% static 'assets/img/testimonials/testimonials-4.jpg '%}" class="testimonial-img" alt="">
               <h3>긱라인 FOLLOWER</h3>
               <br>
               {% if request.user.d_followers.all %}
