@@ -27,7 +27,8 @@
     position: relative;
     margin-bottom: 15px;
     margin-top: 5px;
-    margin-left: calc(100% - 35%);
+    margin-left: calc(100% - 35%);;
+    /* margin-left: calc(100% - 35%); */
     margin-right: 40px;
     padding: 10px;
     background-color: #F8FAFC;
@@ -158,6 +159,7 @@
     order: 1;
     flex-grow: 0;
     margin:content;
+    
 
 }
 
@@ -179,9 +181,10 @@
     /* float:right; */
 }
 
-/* .input{
+.input{
     display: inline-flex;
-} */
+    width: 180% ;
+} 
 
 .sending{
     background: #fe7f5d;
@@ -211,6 +214,7 @@
     opacity: 0.9;
     margin-right: 1%;
     
+    
 
 }
 
@@ -219,6 +223,8 @@
     font-weight: bold;
     font-size: 1.1rem;
     border-style:none;
+    
+
 }
 
     
@@ -263,15 +269,13 @@
     
         
         
-        <form action="{%url 'conversation:create_talk'%}" method="post" enctype="multipart/form-data" style="margin-top: 20px;">
+        <form action="{%url 'conversation:create_talk'%}" method="post" enctype="multipart/form-data" style="margin-top: 20px; width:100%"  class="comment">
             {%csrf_token%}  
-                <div class="comment">
-                    <p class="comment-header">댓글</p>
-                    <div class="input first"><textarea class="talk-input"  style="width: 760px; margin:2px 0px 50px 0px;; height: 94px; border-color: rgb(220, 220, 220); border-radius: 10px; float:left;" type="text" name="body" id="" cols="50" rows="3" 
+                    <p class="comment-header" style="writing-mode: horizontal-tb;">댓글</p>
+                    <div class="input first"><textarea class="talk-input"  style="width: 160%; margin:2px 0px 50px 0px;; height: 94px; border-color: rgb(220, 220, 220); border-radius: 10px; float:left;" type="text" name="body" id="" cols="50" rows="3" 
                     required></textarea></div>
-                    <div class="input two"><button class="sending" type="submit" style="float:right; height:94px; width: 110px; margin-left:0.5rem; ">전송</button></div>
-                </div>
-            
+                    <div class="input two" style="margin-right: 0px;"><button class="sending" type="submit" style="float:right; height:94px; width: 20%; margin-left:0.5rem; margin-right:0%; position:relative; top: 0px; left:60%;">전송</button></div>
+                
         </form>
     </div>
 </div>
