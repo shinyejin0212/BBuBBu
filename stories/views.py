@@ -14,7 +14,7 @@ def new_story(request):
     return render(request,"new_story.html")
 
 def my_story(request):
-    stories = Story.objects.all()
+    stories = Story.objects.filter(writer=request.user)
     return render(request,"my_story.html",{"stories":stories})
 
 def create(request):
