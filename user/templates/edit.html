@@ -1,76 +1,76 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
 <head>
     <style>
         /* signup_container*/
 
-.signup_container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  margin-top: 40px;
-  width: 600px;
-  text-align: center;
-  overflow: auto;
-}
+        .signup_container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 80%;
+            text-align: center;
+            overflow: auto;
+        }
 
-.signup_title {
-  font-weight: 100;
-  margin-top: 30px;
-  font-size: 30px;
-  margin-bottom: 50px;
-}
+        .signup_title {
+            font-weight: 100;
+            margin-top: 30px;
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
 
-.signup_input_container {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  height : 3%;
-  margin-bottom: 20px;
-}
+        .signup_input_container {
+            display: block;
+            margin: 0 auto;
+            height: 3%;
+            margin-bottom: 20px;
+        }
 
-.signup_input_title {
-  text-align: left;
-  margin-left: 20px;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
+        .signup_input_title {
+            border:none;
+            width: 200px;
+            text-align: left;
+            
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
 
-.signup {
-  width: 250px;
-  height: 40px;
-  background-color: white;
-  border: 1px solid lightgray;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 5px;
-  font-size: 10px;
-}
+        .signup {
+            width: 200px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 5px;
+            font-size: 10px;
+        }
 
-#hobbyBtn {
-  margin-top: 10px;
-  width: 100px;
-  color: white;
-  background-color: #4ccd97;
-  padding: 6px;
-  border: none;
-  border-radius: 8px;
-}
+        #hobbyBtn {
+            margin-top: 10px;
+            width: 100px;
+            color: white;
+            background-color: #4ccd97;
+            padding: 6px;
+            border: none;
+            border-radius: 8px;
+        }
 
-#confirmBtn {
-  margin-top: 10px;
-  width: 250px;
-  color: white;
-  background-color: #ff8668;
-  padding: 6px;
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  font-weight: bold;
-}
+        #confirmBtn {
+            margin-top: 10px;
+            width:200px;
+            color: white;
+            background-color: #ff8668;
+            padding: 6px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <div class="row mt-5">
@@ -79,124 +79,135 @@
     </div>
 </div>
 <section>
-    <divc lass="container" data-aos="zoom-in" data-aos-delay="100">
-        <div class = "signup_container">
-    <form action="{%url 'user:update_profile' profile.id%}" method="POST">
-        {%csrf_token%}
-        {% comment %} <div class="signup_input_container">
-            <div class="signup_input_title">사진</div>
-            <input name="photo" type="file" accept="image/*">
-        </div>  {% endcomment %}
-        <div class="signup_input_container">
-            <div class="signup_input_title">아이디</div>
-            <input type="text" class="signup" name="username"  value="{{profile.username}}">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="signup_container">
+            <form action="{%url 'user:update_profile' profile.id%}" method="POST">
+                {%csrf_token%}
+                {% comment %} <div class="signup_input_container">
+                    <div class="signup_input_title">사진</div>
+                    <input name="photo" type="file" accept="image/*">
+                </div> {% endcomment %}
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="아이디"><br>
+
+                    <input type="text" class="signup" name="username" value="{{profile.username}}">
+                </div>
+                <div class="signup_input_container">
+                <input class="signup_input_title" disabled value="비밀번호"><br>
+
+                    <input required type="password" class="signup" name="password1" placeholder="비밀번호 입력해주세요">
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="비밀번호 확인"><br>
+
+                    <input required type="password" class="signup" name="password2" placeholder="비밀번호 다시 입력해주세요">
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="닉네임"><br>
+
+                    <input type="text" class="signup" name="nickname" value="{{profile.nickname}}">
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="이름"><br>
+
+                    <input type="text" class="signup" name="name" value="{{profile.name}}">
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="학과"><br>
+
+                    <select style='font-size:12px;' name="department">
+                        <option value="AI융합학부">AI융합학부</option>
+                        <option value="가정교육과">가정교육과</option>
+                        <option value="건설환경공학과">건설환경공학과</option>
+                        <option value="건축공학전공">건축공학전공</option>
+                        <option value="건축학전공">건축학전공</option>
+                        <option value="경영정보학과">경영정보학과</option>
+                        <option value="경영학과">경영학과</option>
+                        <option value="경제학과">경제학과</option>
+                        <option value="경찰행정학부">경찰행정학부</option>
+                        <option value="광고홍보학과">광고홍보학과</option>
+                        <option value="교육학과">교육학과</option>
+                        <option value="국어교육과">국어교육과</option>
+                        <option value="국어국문학전공">국어국문학전공</option>
+                        <option value="국제통상학과">국제통상학과</option>
+                        <option value="글로벌무역학과">글로벌무역학과</option>
+                        <option value="기계로봇에너지공학과">기계로봇에너지공학과</option>
+                        <option value="멀티미디어공학과">멀티미디어공학과</option>
+                        <option value="문예창작학전공">문예창작학전공</option>
+                        <option value="물리학전공">물리학전공</option>
+                        <option value="뮤지컬전공">뮤지컬전공</option>
+                        <option value="미디어커뮤니케이션학전공">미디어커뮤니케이션학전공</option>
+                        <option value="바이오환경과학과">바이오환경과학과</option>
+                        <option value="반도체과학전공">반도체과학전공</option>
+                        <option value="법학과">법학과</option>
+                        <option value="북한학전공">북한학전공</option>
+                        <option value="불교미술전공">불교미술전공</option>
+                        <option value="불교학부">불교학부</option>
+                        <option value="사학과">사학과</option>
+                        <option value="사회복지상담학과">사회복지상담학과</option>
+                        <option value="사회복지학과">사회복지학과</option>
+                        <option value="사회학전공">사회학전공</option>
+                        <option value="산업시스템공학과">산업시스템공학과</option>
+                        <option value="생명과학과">생명과학과</option>
+                        <option value="서양화전공">서양화전공</option>
+                        <option value="수학과">수학과</option>
+                        <option value="수학교육과">수학교육과</option>
+                        <option value="스포츠문화학과">스포츠문화학과</option>
+                        <option value="식품산업관리학과">식품산업관리학과</option>
+                        <option value="식품생명공학과">식품생명공학과</option>
+                        <option value="약학과">약학과</option>
+                        <option value="역사교육과">역사교육과</option>
+                        <option value="연극전공">연극전공</option>
+                        <option value="영어문학전공">영어문학전공</option>
+                        <option value="영어통번역학전공">영어통번역학전공</option>
+                        <option value="영화영상학과">영화영상학과</option>
+                        <option value="윤리문화학전공">윤리문화학전공</option>
+                        <option value="융합보안학과">융합보안학과</option>
+                        <option value="융합에너지신소재공학과">융합에너지신소재공학과</option>
+                        <option value="의생명공학과">의생명공학과</option>
+                        <option value="일본학과">일본학과</option>
+                        <option value="전자전기공학부">전자전기공학부</option>
+                        <option value="정보통신공학전공">정보통신공학전공</option>
+                        <option value="정치외교학전공">정치외교학전공</option>
+                        <option value="조소전공">조소전공</option>
+                        <option value="중어중문학과">중어중문학과</option>
+                        <option value="지리교육과">지리교육과</option>
+                        <option value="철학과">철학과</option>
+                        <option value="체육교육과">체육교육과</option>
+                        <option value="컴퓨터공학전공">컴퓨터공학전공</option>
+                        <option value="통계학과">통계학과</option>
+                        <option value="한국화전공">한국화전공</option>
+                        <option value="행정학전공">행정학전공</option>
+                        <option value="화공생물공학과">화공생물공학과</option>
+                        <option value="화학과">화학과</option>
+                        <option value="회계학과">회계학과</option>
+                    </select>
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="학번"><br>
+                    <input type="text" class="signup" name="school_id" value="{{profile.school_id}}">
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="기숙사생 여부"><br>
+
+                    <div>
+                        <span id="hobbyRadio" style="font-size: 13px;"><input type="radio" name="is_dorm"
+                                value="yes">기숙사생</span>
+                        <span id="hobbyRadio" style="font-size: 13px;"><input checked type="radio" name="is_dorm"
+                                value="no">아님</span>
+                    </div>
+                </div>
+                <div class="signup_input_container">
+                    <input class="signup_input_title" disabled value="기숙사 번호"><br>
+
+                    <input type="text" class="signup" default='' name="dorm_id"
+                        {% if 'no' in profile.is_dorm %}placeholder="기숙사번호 (기숙사생 아닐시 입력하지 않음) "
+                        {%else%}value="{{profile.dorm_id}}" {%endif%}>
+                </div>
+                <button id="confirmBtn" type="submit">완료</button>
+            </form>
         </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">비밀번호</div>
-            <input required type="password" class="signup" name="password1" placeholder="비밀번호 입력해주세요">
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">비밀번호 확인</div>
-            <input required type="password" class="signup" name="password2" placeholder="비밀번호 다시 입력해주세요">
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">닉네임</div>
-            <input type="text" class="signup" name="nickname" value="{{profile.nickname}}">
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">이름</div>
-            <input type="text" class="signup" name="name" value="{{profile.name}}">
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">학과</div>
-            <select style='font-size:12px;' name="department">
-                <option value="AI융합학부">AI융합학부</option>
-                <option value="가정교육과">가정교육과</option>
-                <option value="건설환경공학과">건설환경공학과</option>
-                <option value="건축공학전공">건축공학전공</option>
-                <option value="건축학전공">건축학전공</option>
-                <option value="경영정보학과">경영정보학과</option>
-                <option value="경영학과">경영학과</option>
-                <option value="경제학과">경제학과</option>
-                <option value="경찰행정학부">경찰행정학부</option>
-                <option value="광고홍보학과">광고홍보학과</option>
-                <option value="교육학과">교육학과</option>
-                <option value="국어교육과">국어교육과</option>
-                <option value="국어국문학전공">국어국문학전공</option>
-                <option value="국제통상학과">국제통상학과</option>
-                <option value="글로벌무역학과">글로벌무역학과</option>
-                <option value="기계로봇에너지공학과">기계로봇에너지공학과</option>
-                <option value="멀티미디어공학과">멀티미디어공학과</option>
-                <option value="문예창작학전공">문예창작학전공</option>
-                <option value="물리학전공">물리학전공</option>
-                <option value="뮤지컬전공">뮤지컬전공</option>
-                <option value="미디어커뮤니케이션학전공">미디어커뮤니케이션학전공</option>
-                <option value="바이오환경과학과">바이오환경과학과</option>
-                <option value="반도체과학전공">반도체과학전공</option>
-                <option value="법학과">법학과</option>
-                <option value="북한학전공">북한학전공</option>
-                <option value="불교미술전공">불교미술전공</option>
-                <option value="불교학부">불교학부</option>
-                <option value="사학과">사학과</option>
-                <option value="사회복지상담학과">사회복지상담학과</option>
-                <option value="사회복지학과">사회복지학과</option>
-                <option value="사회학전공">사회학전공</option>
-                <option value="산업시스템공학과">산업시스템공학과</option>
-                <option value="생명과학과">생명과학과</option>
-                <option value="서양화전공">서양화전공</option>
-                <option value="수학과">수학과</option>
-                <option value="수학교육과">수학교육과</option>
-                <option value="스포츠문화학과">스포츠문화학과</option>
-                <option value="식품산업관리학과">식품산업관리학과</option>
-                <option value="식품생명공학과">식품생명공학과</option>
-                <option value="약학과">약학과</option>
-                <option value="역사교육과">역사교육과</option>
-                <option value="연극전공">연극전공</option>
-                <option value="영어문학전공">영어문학전공</option>
-                <option value="영어통번역학전공">영어통번역학전공</option>
-                <option value="영화영상학과">영화영상학과</option>
-                <option value="윤리문화학전공">윤리문화학전공</option>
-                <option value="융합보안학과">융합보안학과</option>
-                <option value="융합에너지신소재공학과">융합에너지신소재공학과</option>
-                <option value="의생명공학과">의생명공학과</option>
-                <option value="일본학과">일본학과</option>
-                <option value="전자전기공학부">전자전기공학부</option>
-                <option value="정보통신공학전공">정보통신공학전공</option>
-                <option value="정치외교학전공">정치외교학전공</option>
-                <option value="조소전공">조소전공</option>
-                <option value="중어중문학과">중어중문학과</option>
-                <option value="지리교육과">지리교육과</option>
-                <option value="철학과">철학과</option>
-                <option value="체육교육과">체육교육과</option>
-                <option value="컴퓨터공학전공">컴퓨터공학전공</option>
-                <option value="통계학과">통계학과</option>
-                <option value="한국화전공">한국화전공</option>
-                <option value="행정학전공">행정학전공</option>
-                <option value="화공생물공학과">화공생물공학과</option>
-                <option value="화학과">화학과</option>
-                <option value="회계학과">회계학과</option>
-            </select>
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">학번</div>
-            <input type="text" class="signup" name="school_id" value="{{profile.school_id}}">
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">기숙사생 여부</div>
-            <div>
-                <span id="hobbyRadio" style="font-size: 13px;"><input type="radio" name="is_dorm" value="yes">기숙사생</span>
-                <span id="hobbyRadio" style="font-size: 13px;"><input checked type="radio" name="is_dorm" value="no">아님</span>
-            </div>
-        </div>
-        <div class="signup_input_container">
-            <div class="signup_input_title">기숙사 번호</div>
-            <input type="text" class="signup" default='' name="dorm_id" {% if 'no' in profile.is_dorm %}placeholder="기숙사번호 (기숙사생 아닐시 입력하지 않음) "{%else%}value="{{profile.dorm_id}}"{%endif%}>
-        </div>
-        <button id="confirmBtn" type="submit">완료</button>
-    </form>
     </div>
-    </div>
-    </section>
+</section>
 
 {%endblock%}
-
