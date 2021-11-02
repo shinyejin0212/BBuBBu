@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 input:disabled {
-  background:white;
+  background:transparent;
 }
 body {
   font-family: "Open Sans", sans-serif;

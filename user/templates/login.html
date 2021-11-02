@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<head>
+
   <style>
     /* signup_container*/
 
@@ -11,8 +11,7 @@
       flex-direction: column;
       margin: 0 auto;
       margin-top: 40px;
-      width: 600px;
-
+      width: 80%;
       text-align: center;
     }
 
@@ -26,20 +25,22 @@
     .signup_input_container {
       display: block;
       margin: 0 auto;
-      width: 50%;
+ 
 
       margin-bottom: 20px;
     }
 
     .signup_input_title {
+      border:none;
+      width: 200px;
       text-align: left;
-      margin-left: 20px;
+      
       font-size: 12px;
       margin-bottom: 10px;
-    }
+  }
 
     .signup {
-      width: 250px;
+      width: 200px;
       height: 40px;
       background-color: white;
       border: 1px solid lightgray;
@@ -61,7 +62,7 @@
 
     #confirmBtn {
       margin-top: 10px;
-      width: 200px;
+      width: 150px;
       color: white;
       background-color: #ff8668;
       padding: 6px;
@@ -73,7 +74,7 @@
 
     .sign {
       margin-top: 10px;
-      width: 250px;
+      width: 200px;
       color: white;
       background-color: #ff8668;
       padding: 6px;
@@ -83,21 +84,22 @@
       font-weight: bold;
     }
   </style>
-</head>
-<section id="hero" class="d-flex flex-column justify-content-center">
-  <div class="container" data-aos="zoom-in" data-aos-delay="100">
+<section>
+ <div class="container" data-aos="zoom-in" data-aos-delay="100">
     <div class="signup_container">
       <form action="{%url 'user:login' %}" method="POST">
         {%csrf_token%}
         <div class="signup_title">로그인</div>
 
         <div class="signup_input_container">
-          <div class="signup_input_title">아이디</div>
+          <input style="background:transparent;" class="signup_input_title" disabled value="아이디"><br>
+
           <input type="text" class="signup" name="username" placeholder="아이디">
         </div>
         <br>
         <div class="signup_input_container">
-          <div class="signup_input_title">비밀번호</div>
+          <input style="background:transparent;" class="signup_input_title" disabled value="비밀번호"><br>
+
           <input type="password" class="signup" name="password" placeholder="비밀번호">
 
         </div>
@@ -107,6 +109,5 @@
       </form>
     </div>
   </div>
-</section><!-- End Hero -->
-
+</section>
 {%endblock%}
